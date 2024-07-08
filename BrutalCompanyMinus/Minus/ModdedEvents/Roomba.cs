@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "Moving Landmines!!", "Facility hoovers", "Weapons of war", "These things are against the Geneva convention" };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 3;
+            descriptions = new List<string>() { "Moving Landmines!!", "Facility hoovers", "Weapons of war", "These things are against the Geneva convention" };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
 
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(

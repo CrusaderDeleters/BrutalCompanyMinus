@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            EventsToRemove = new List<string>() { nameof(Hell), nameof(ShyGuy) };
+            eventsToRemove = new List<string>() { nameof(Hell), nameof(ShyGuy) };
 
-            Weight = 1;
-            Descriptions = new List<string>() { "SCP-096 is contained.", "You can open your eyes" };
-            ColorHex = "#008000";
-            Type = EventType.Remove;
+            weight = 1;
+            descriptions = new List<string>() { "SCP-096 is contained.", "You can open your eyes" };
+            colorHex = "#008000";
+            type = EventType.Remove;
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists("ShyGuyDef") && Compatibility.scopophobiaPresent;

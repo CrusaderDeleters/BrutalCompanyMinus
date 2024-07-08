@@ -21,7 +21,7 @@ namespace BrutalCompanyMinus
         public static UI Instance { get; private set; }
         public static GameObject eventUIObject { get; set; }
 
-        public GameObject panelBackground, upArrowPanel, downArrowPanel;
+        public GameObject panelBackground, upArrowPanel, downArrowPanel, letterPanel;
         public TextMeshProUGUI panelText, letter, upArrow, downArrow;
         public Scrollbar panelScrollBar;
 
@@ -44,7 +44,7 @@ namespace BrutalCompanyMinus
         {
             Instance = this;
 
-            showCaseEventTime = Configuration.UITime.Value;
+            showCaseEventTime = Configuration.UITimeSeconds.Value;
             Net.Instance.textUI.OnValueChanged += (previous, current) => panelText.text = current.ToString(); // For Text update
 
             Component[] components = UI.eventUIObject.GetComponentsInChildren<Component>(true);
@@ -69,6 +69,7 @@ namespace BrutalCompanyMinus
                             }
                             break;
                         case "LetterPanel":
+                            if(letterPanel == null) letterPanel = comp.gameObject;
                             if (!Configuration.ShowUILetterBox.Value || !Configuration.EnableUI.Value) comp.gameObject.SetActive(false);
                             break;
                         case "Scrollbar":

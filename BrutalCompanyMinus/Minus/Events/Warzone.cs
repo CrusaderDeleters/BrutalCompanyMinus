@@ -24,13 +24,13 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "Landmines? Turrets? all of it", "DDay is here", "Enjoy getting bombarded" };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 1;
+            descriptions = new List<string>() { "Landmines? Turrets? all of it", "DDay is here", "Enjoy getting bombarded" };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
-            EventsToRemove = new List<string>() { nameof(LeaflessBrownTrees), nameof(LeaflessTrees) };
-            EventsToSpawnWith = new List<string>() { nameof(Turrets), nameof(Landmines), nameof(OutsideTurrets), nameof(OutsideLandmines), nameof(Trees) };
+            eventsToRemove = new List<string>() { nameof(LeaflessBrownTrees), nameof(LeaflessTrees) };
+            eventsToSpawnWith = new List<string>() { nameof(Turrets), nameof(Landmines), nameof(OutsideTurrets), nameof(OutsideLandmines), nameof(Trees) };
         }
 
         public override bool AddEventIfOnly() => RoundManager.Instance.currentLevel.spawnableMapObjects.ToList().Exists(x => x.prefabToSpawn.name == Assets.ObjectNameList[Assets.ObjectName.Turret]) || RoundManager.Instance.currentLevel.spawnableMapObjects.ToList().Exists(x => x.prefabToSpawn.name == Assets.ObjectNameList[Assets.ObjectName.Landmine]);

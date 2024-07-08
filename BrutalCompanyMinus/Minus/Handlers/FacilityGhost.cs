@@ -7,19 +7,20 @@ using com.github.zehsteam.ToilHead.MonoBehaviours;
 using BrutalCompanyMinus.Minus.Events;
 using BrutalCompanyMinus.Minus.MonoBehaviours;
 using static UnityEngine.GraphicsBuffer;
+using BepInEx.Configuration;
 
 namespace BrutalCompanyMinus.Minus.Handlers
 {
     [HarmonyPatch]
     internal class FacilityGhost
     {
-        public static float actionCurrentTime = 0.0f, actionTimeCooldown = 15.0f; // Normal
+        public static ConfigEntry<float> actionCurrentTime, actionTimeCooldown; // Normal
 
-        public static float ghostCrazyCurrentTime = 0.0f, ghostCrazyPeriod = 3.0f, ghostCrazyActionInterval = 0.1f, crazyGhostChance = 0.1f; // Crazy
+        public static ConfigEntry<float> ghostCrazyCurrentTime, ghostCrazyPeriod, ghostCrazyActionInterval, crazyGhostChance; // Crazy
 
-        public static int DoNothingWeight = 20, OpenCloseBigDoorsWeight = 20, MessWithLightsWeight = 16, MessWithBreakerWeight = 4, OpenCloseDoorsWeight = 9, lockUnlockDoorsWeight = 3, disableTurretsWeight = 5, disableLandminesWeight = 5, disableSpikeTrapsWeight = 5, turretRageWeight = 15;
+        public static ConfigEntry<int> DoNothingWeight, OpenCloseBigDoorsWeight, MessWithLightsWeight, MessWithBreakerWeight, OpenCloseDoorsWeight, lockUnlockDoorsWeight, disableTurretsWeight, disableLandminesWeight, disableSpikeTrapsWeight, turretRageWeight;
 
-        public static float chanceToOpenCloseDoor = 0.3f, chanceToLockUnlockDoor = 0.1f, rageTurretsChance = 0.33f;
+        public static ConfigEntry<float> chanceToOpenCloseDoor, chanceToLockUnlockDoor, rageTurretsChance;
 
         private static System.Random rng = new System.Random();
 
@@ -29,25 +30,25 @@ namespace BrutalCompanyMinus.Minus.Handlers
         {
             if (!Events.FacilityGhost.Active || !RoundManager.Instance.IsHost) return;
 
-            if(ghostCrazyCurrentTime > 0.0f)
+            if(ghostCrazyCurrentTime.Value > 0.0f)
             {
-                ghostCrazyCurrentTime -= Time.deltaTime;
+                ghostCrazyCurrentTime.Value -= Time.deltaTime;
             }
-            if(actionCurrentTime > 0.0f)
+            if(actionCurrentTime.Value > 0.0f)
             {
-                actionCurrentTime -= Time.deltaTime;
+                actionCurrentTime.Value -= Time.deltaTime;
             } else
             {
                 rng = new System.Random(Net.Instance._seed++);
 
                 // Decide if ghosts goes crazy
-                if(rng.NextDouble() <= crazyGhostChance && ghostCrazyCurrentTime <= 0.0f)
+                if(rng.NextDouble() <= crazyGhostChance.Value && ghostCrazyCurrentTime.Value <= 0.0f)
                 {
                     Log.LogInfo("Ghost has went crazy");
                     ghostCrazyCurrentTime = ghostCrazyPeriod;
                 }
 
-                if(ghostCrazyCurrentTime > 0.0f)
+                if(ghostCrazyCurrentTime.Value > 0.0f)
                 {
                     actionCurrentTime = ghostCrazyActionInterval;
                 } else
@@ -55,8 +56,8 @@ namespace BrutalCompanyMinus.Minus.Handlers
                     actionCurrentTime = actionTimeCooldown;
                 }
 
-                int[] weights = new int[10] { DoNothingWeight, OpenCloseDoorsWeight, MessWithLightsWeight, MessWithBreakerWeight, OpenCloseDoorsWeight, lockUnlockDoorsWeight, disableTurretsWeight, disableLandminesWeight, disableSpikeTrapsWeight, turretRageWeight };
-                if (ghostCrazyCurrentTime > 0.0f)
+                int[] weights = new int[10] { DoNothingWeight.Value, OpenCloseDoorsWeight.Value, MessWithLightsWeight.Value, MessWithBreakerWeight.Value, OpenCloseDoorsWeight.Value, lockUnlockDoorsWeight.Value, disableTurretsWeight.Value, disableLandminesWeight.Value, disableSpikeTrapsWeight.Value, turretRageWeight.Value };
+                if (ghostCrazyCurrentTime.Value > 0.0f)
                 {
                     weights[0] = 0; // Wont attempt to do nothing when going crazy
                     weights[5] = 0; // Wont attempt to lock or unlock doors when going crazy
@@ -90,11 +91,11 @@ namespace BrutalCompanyMinus.Minus.Handlers
                         break;
                     case 4:
                         Log.LogInfo("Facility ghost attempts to open and close doors");
-                        Net.Instance.MessWithDoorsServerRpc(chanceToOpenCloseDoor);
+                        Net.Instance.MessWithDoorsServerRpc(chanceToOpenCloseDoor.Value);
                         break;
                     case 5:
                         Log.LogInfo("Facility ghost attempts to lock and unlock doors");
-                        Net.Instance.MessWithDoorsServerRpc(chanceToOpenCloseDoor, true, chanceToLockUnlockDoor);
+                        Net.Instance.MessWithDoorsServerRpc(chanceToOpenCloseDoor.Value, true, chanceToLockUnlockDoor.Value);
                         break;
                     case 6:
                         Log.LogInfo("Facility ghost attempts to disable turrets");
@@ -135,7 +136,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
                         Turret[] _turrets = GameObject.FindObjectsOfType<Turret>();
                         foreach(Turret _turret in _turrets)
                         {
-                            if(rng.NextDouble() <= rageTurretsChance) 
+                            if(rng.NextDouble() <= rageTurretsChance.Value) 
                             {
                                 if (_turret.turretMode == TurretMode.Berserk || _turret.turretMode == TurretMode.Firing || !_turret.turretActive) continue;
 
@@ -165,7 +166,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
 
             foreach (ToilHeadTurretBehaviour turret in turrets)
             {
-                if (rng.NextDouble() <= rageTurretsChance)
+                if (rng.NextDouble() <= rageTurretsChance.Value)
                 {
                     if (turret.turretMode == TurretMode.Berserk || turret.turretMode == TurretMode.Firing || !turret.turretActive) continue;
 

@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            EventsToRemove = new List<string>() { nameof(Hell), nameof(RollingGiants) };
+            eventsToRemove = new List<string>() { nameof(Hell), nameof(RollingGiants) };
 
-            Weight = 1;
-            Descriptions = new List<string>() { "No slow moving things", "No immortal snails", "No thermonuclear bombs here..." };
-            ColorHex = "#008000";
-            Type = EventType.Remove;
+            weight = 1;
+            descriptions = new List<string>() { "No slow moving things", "No immortal snails", "No thermonuclear bombs here..." };
+            colorHex = "#008000";
+            type = EventType.Remove;
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists("ImmortalSnail.EnemyType") && Compatibility.immortalSnailPresent;

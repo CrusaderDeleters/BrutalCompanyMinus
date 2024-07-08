@@ -74,7 +74,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
             foreach (Keyframe key in Assets.daytimeSpawnChanceCurves[levelIndex].keys) __instance.currentLevel.daytimeEnemySpawnChanceThroughDay.AddKey(key);
 
             Events.GrabbableLandmines.LandmineDisabled = false;
-            foreach (MEvent e in EventManager.events) e.Executed = false;
+            foreach (MEvent e in EventManager.events) e.executed = false;
 
             RoundManager.Instance.currentLevel.maxEnemyPowerCount = Assets.insideMaxPowerCounts[levelIndex];
             RoundManager.Instance.currentLevel.maxOutsideEnemyPowerCount = Assets.outsideMaxPowerCounts[levelIndex];

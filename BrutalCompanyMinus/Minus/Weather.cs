@@ -3,12 +3,12 @@ using Unity.Netcode;
 using HarmonyLib;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using BepInEx.Configuration;
 
 namespace BrutalCompanyMinus.Minus
 {
     public struct Weather : INetworkSerializable, IEquatable<Weather>
     {
-
         public LevelWeatherType weatherType;
 
         public float scrapValueMultiplier;
@@ -52,13 +52,13 @@ namespace BrutalCompanyMinus.Minus
         public static NetworkList<Weather> InitalizeWeatherMultipliers(NetworkList<Weather> currentWeatherMultipliers)
         {
             // Set Initial Values
-            currentWeatherMultipliers.Add(Configuration.noneMultiplier);
-            currentWeatherMultipliers.Add(Configuration.dustCloudMultiplier);
-            currentWeatherMultipliers.Add(Configuration.rainyMultiplier);
-            currentWeatherMultipliers.Add(Configuration.stormyMultiplier);
-            currentWeatherMultipliers.Add(Configuration.foggyMultiplier);
-            currentWeatherMultipliers.Add(Configuration.floodedMultiplier);
-            currentWeatherMultipliers.Add(Configuration.eclipsedMultiplier);
+            currentWeatherMultipliers.Add(Configuration.noneMultiplier.weather);
+            currentWeatherMultipliers.Add(Configuration.dustCloudMultiplier.weather);
+            currentWeatherMultipliers.Add(Configuration.rainyMultiplier.weather);
+            currentWeatherMultipliers.Add(Configuration.stormyMultiplier.weather);
+            currentWeatherMultipliers.Add(Configuration.foggyMultiplier.weather);
+            currentWeatherMultipliers.Add(Configuration.floodedMultiplier.weather);
+            currentWeatherMultipliers.Add(Configuration.eclipsedMultiplier.weather);
 
             return currentWeatherMultipliers;
         }
@@ -75,25 +75,25 @@ namespace BrutalCompanyMinus.Minus
                 switch (currentWeatherMultipliers[i].weatherType)
                 {
                     case LevelWeatherType.None:
-                        currentWeatherMultipliers[i] = multipliers * Configuration.noneMultiplier;
+                        currentWeatherMultipliers[i] = multipliers * Configuration.noneMultiplier.weather;
                         break;
                     case LevelWeatherType.DustClouds:
-                        currentWeatherMultipliers[i] = multipliers * Configuration.dustCloudMultiplier;
+                        currentWeatherMultipliers[i] = multipliers * Configuration.dustCloudMultiplier.weather;
                         break;
                     case LevelWeatherType.Rainy:
-                        currentWeatherMultipliers[i] = multipliers * Configuration.rainyMultiplier;
+                        currentWeatherMultipliers[i] = multipliers * Configuration.rainyMultiplier.weather;
                         break;
                     case LevelWeatherType.Stormy:
-                        currentWeatherMultipliers[i] = multipliers * Configuration.stormyMultiplier;
+                        currentWeatherMultipliers[i] = multipliers * Configuration.stormyMultiplier.weather;
                         break;
                     case LevelWeatherType.Foggy:
-                        currentWeatherMultipliers[i] = multipliers * Configuration.foggyMultiplier;
+                        currentWeatherMultipliers[i] = multipliers * Configuration.foggyMultiplier.weather;
                         break;
                     case LevelWeatherType.Flooded:
-                        currentWeatherMultipliers[i] = multipliers * Configuration.floodedMultiplier;
+                        currentWeatherMultipliers[i] = multipliers * Configuration.floodedMultiplier.weather;
                         break;
                     case LevelWeatherType.Eclipsed:
-                        currentWeatherMultipliers[i] = multipliers * Configuration.eclipsedMultiplier;
+                        currentWeatherMultipliers[i] = multipliers * Configuration.eclipsedMultiplier.weather;
                         break;
                 }
             }

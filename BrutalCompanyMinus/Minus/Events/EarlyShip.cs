@@ -20,15 +20,15 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "The ship has arrived a little early.", "Warp drive activated!", "The early bird catches the worm." };
-            ColorHex = "#008000";
-            Type = EventType.Good;
+            weight = 1;
+            descriptions = new List<string>() { "The ship has arrived a little early.", "Warp drive activated!", "The early bird catches the worm." };
+            colorHex = "#008000";
+            type = EventType.Good;
 
-            EventsToRemove = new List<string>() { nameof(LateShip) };
+            eventsToRemove = new List<string>() { nameof(LateShip) };
 
-            ScaleList.Add(ScaleType.MinAmount, new Scale(-45.0f, -0.55f, -100.0f, -45.0f));
-            ScaleList.Add(ScaleType.MaxAmount, new Scale(-60.0f, -0.55f, -100.0f, -60.0f));
+            scaleList.Add(ScaleType.MinAmount, new Scale(-45.0f, -0.55f, -100.0f, -45.0f));
+            scaleList.Add(ScaleType.MaxAmount, new Scale(-60.0f, -0.55f, -100.0f, -60.0f));
         }
 
         public override void Execute() => Net.Instance.MoveTimeServerRpc(UnityEngine.Random.Range(Getf(ScaleType.MinAmount), Getf(ScaleType.MaxAmount)));

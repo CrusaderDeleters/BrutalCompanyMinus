@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "These things are against the geneva convention.", "Toilheads!", "The coilheads have gotten a software upgrade.", "All the heads!", "You downloaded this mod, not me..." };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 3;
+            descriptions = new List<string>() { "These things are against the geneva convention.", "Toilheads!", "The coilheads have gotten a software upgrade.", "All the heads!", "You downloaded this mod, not me..." };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
-            EventsToRemove = new List<string>() { nameof(Coilhead), nameof(AntiCoilhead) };
+            eventsToRemove = new List<string>() { nameof(Coilhead), nameof(AntiCoilhead) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.CoilHead,

@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "It helps if you weight a little more", "These might take your head off", "Flower snakes!" };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 3;
+            descriptions = new List<string>() { "It helps if you weight a little more", "These might take your head off", "Flower snakes!" };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.FlowerSnake,
@@ -33,7 +33,7 @@ namespace BrutalCompanyMinus.Minus.Events
                 new Scale(3.0f, 0.06f, 3.0f, 9.0f))
             };
 
-            ScaleList.Add(ScaleType.DaytimeEnemyRarity, new Scale(20.0f, 0.8f, 20.0f, 100.0f));
+            scaleList.Add(ScaleType.DaytimeEnemyRarity, new Scale(20.0f, 0.8f, 20.0f, 100.0f));
         }
 
         public override void Execute()

@@ -27,13 +27,13 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "Great reward, but at what cost...", "This is the worst event of them all", "You are going to need jesus for this one", "Before crushing the life out of you, I will show you why my power is utterly beyond question!" };
-            ColorHex = "#280000";
-            Type = EventType.VeryBad;
+            weight = 1;
+            descriptions = new List<string>() { "Great reward, but at what cost...", "This is the worst event of them all", "You are going to need jesus for this one", "Before crushing the life out of you, I will show you why my power is utterly beyond question!" };
+            colorHex = "#280000";
+            type = EventType.VeryBad;
 
-            EventsToRemove = new List<string>() { nameof(Trees), nameof(LeaflessBrownTrees), nameof(Gloomy), nameof(Raining), nameof(HeavyRain), nameof(Warzone), nameof(EarlyShip), nameof(LateShip) };
-            EventsToSpawnWith = new List<string>() { nameof(LeaflessTrees), nameof(FacilityGhost), nameof(Spiders), nameof(Thumpers), nameof(Landmines) };
+            eventsToRemove = new List<string>() { nameof(Trees), nameof(LeaflessBrownTrees), nameof(Gloomy), nameof(Raining), nameof(HeavyRain), nameof(Warzone), nameof(EarlyShip), nameof(LateShip) };
+            eventsToSpawnWith = new List<string>() { nameof(LeaflessTrees), nameof(FacilityGhost), nameof(Spiders), nameof(Thumpers), nameof(Landmines) };
 
             monsterEvents = new List<MonsterEvent>(){ new MonsterEvent(
                 Assets.EnemyName.Bracken,
@@ -66,10 +66,10 @@ namespace BrutalCompanyMinus.Minus.Events
                 new Scale(0.0f, 0.0f, 0.0f, 0.0f))
             };
 
-            ScaleList.Add(ScaleType.ScrapValue, new Scale(1.75f, 0.0225f, 1.75f, 4.0f));
-            ScaleList.Add(ScaleType.ScrapAmount, new Scale(1.75f, 0.0225f, 1.75f, 4.0f));
-            ScaleList.Add(ScaleType.SpawnMultiplier, new Scale(1.0f, 0.02f, 1.0f, 3.0f));
-            ScaleList.Add(ScaleType.FactorySize, new Scale(1.5f, 0.01f, 1.5f, 2.5f));
+            scaleList.Add(ScaleType.ScrapValue, new Scale(1.75f, 0.0225f, 1.75f, 4.0f));
+            scaleList.Add(ScaleType.ScrapAmount, new Scale(1.75f, 0.0225f, 1.75f, 4.0f));
+            scaleList.Add(ScaleType.SpawnMultiplier, new Scale(1.0f, 0.02f, 1.0f, 3.0f));
+            scaleList.Add(ScaleType.FactorySize, new Scale(1.5f, 0.01f, 1.5f, 2.5f));
             
             insideHellSpawnCycle = new SpawnCycle()
             {

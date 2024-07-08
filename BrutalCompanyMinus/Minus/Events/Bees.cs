@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "BEES!!", "BZZZZZ", "Nature's architects are at work.", "Balls" };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 3;
+            descriptions = new List<string>() { "BEES!!", "BZZZZZ", "Nature's architects are at work.", "Balls" };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.CircuitBee,
@@ -33,7 +33,7 @@ namespace BrutalCompanyMinus.Minus.Events
                 new Scale(3.0f, 0.06f, 3.0f, 9.0f))
             };
 
-            ScaleList.Add(ScaleType.DaytimeEnemyRarity, new Scale(20.0f, 0.8f, 20.0f, 100.0f));
+            scaleList.Add(ScaleType.DaytimeEnemyRarity, new Scale(20.0f, 0.8f, 20.0f, 100.0f));
         }
 
         public override void Execute()

@@ -18,13 +18,13 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "Everything here is made cheaply...", "Who produced this crap...", "Budget scrap...", "Quantity over quality" };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 1;
+            descriptions = new List<string>() { "Everything here is made cheaply...", "Who produced this crap...", "Budget scrap...", "Quantity over quality" };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
-            ScaleList.Add(ScaleType.ScrapValue, new Scale(0.6f, 0.0f, 0.6f, 0.6f));
-            ScaleList.Add(ScaleType.ScrapAmount, new Scale(2.0f, 0.0f, 2.0f, 2.0f));
+            scaleList.Add(ScaleType.ScrapValue, new Scale(0.6f, 0.0f, 0.6f, 0.6f));
+            scaleList.Add(ScaleType.ScrapAmount, new Scale(2.0f, 0.0f, 2.0f, 2.0f));
         }
 
         public override void Execute()

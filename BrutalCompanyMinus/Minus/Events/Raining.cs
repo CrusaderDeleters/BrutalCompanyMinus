@@ -19,10 +19,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 8;
-            Descriptions = new List<string>() { "It's raining out here", "Rain...", "The only thing you will see in Ireland" };
-            ColorHex = "#FFFFFF";
-            Type = EventType.Neutral;
+            weight = 8;
+            descriptions = new List<string>() { "It's raining out here", "Rain...", "The only thing you will see in Ireland" };
+            colorHex = "#FFFFFF";
+            type = EventType.Neutral;
         }
 
         public override bool AddEventIfOnly()

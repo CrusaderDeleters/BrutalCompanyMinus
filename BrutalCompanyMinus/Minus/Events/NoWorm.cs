@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            EventsToRemove = new List<string>() { nameof(Hell), nameof(Worms) };
+            eventsToRemove = new List<string>() { nameof(Hell), nameof(Worms) };
 
-            Weight = 1;
-            Descriptions = new List<string>() { "No worms", "No leviathans", "The earth is safe", "No delicacy" };
-            ColorHex = "#008000";
-            Type = EventType.Remove;
+            weight = 1;
+            descriptions = new List<string>() { "No worms", "No leviathans", "The earth is safe", "No delicacy" };
+            colorHex = "#008000";
+            type = EventType.Remove;
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.EarthLeviathan);

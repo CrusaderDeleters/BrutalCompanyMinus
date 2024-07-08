@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "No suits", "No bubblewrap", "No popping", "This facility is missing knives.", "This facility is dirty." };
-            ColorHex = "#008000";
-            Type = EventType.Remove;
+            weight = 1;
+            descriptions = new List<string>() { "No suits", "No bubblewrap", "No popping", "This facility is missing knives.", "This facility is dirty." };
+            colorHex = "#008000";
+            type = EventType.Remove;
 
-            EventsToRemove = new List<string>() { nameof(Butlers), nameof(Hell) };
+            eventsToRemove = new List<string>() { nameof(Butlers), nameof(Hell) };
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.Butler);

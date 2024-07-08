@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 2;
-            Descriptions = new List<string>() { "Bad Dice!!!!", "You wont make it big today", "Horrible luck is bestowed upon you!" };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 2;
+            descriptions = new List<string>() { "Bad Dice!!!!", "You wont make it big today", "Horrible luck is bestowed upon you!" };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
             scrapTransmutationEvent = new ScrapTransmutationEvent(
                 new Scale(0.5f, 0.008f, 0.5f, 0.9f),
@@ -29,9 +29,9 @@ namespace BrutalCompanyMinus.Minus.Events
                 new SpawnableItemWithRarity() { spawnableItem = Assets.GetItem("Sacrificer"), rarity = 20 }
             );
 
-            EventsToRemove = new List<string>() { nameof(RealityShift) };
+            eventsToRemove = new List<string>() { nameof(RealityShift) };
 
-            ScaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
+            scaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
         }
 
         public override bool AddEventIfOnly()

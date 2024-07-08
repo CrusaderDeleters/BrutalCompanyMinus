@@ -21,12 +21,13 @@ namespace BrutalCompanyMinus
 {
     [HarmonyPatch]
     [BepInPlugin(GUID, NAME, VERSION)]
+    [BepInDependency("ainavt.lc.lethalconfig")]
     internal class Plugin : BaseUnityPlugin
     {
-        private const string GUID = "Drinkable.BrutalCompanyMinus";
-        private const string NAME = "BrutalCompanyMinus";
-        private const string VERSION = "0.13.8";
-        private static readonly Harmony harmony = new Harmony(GUID);
+        public const string GUID = "Drinkable.BrutalCompanyMinus";
+        public const string NAME = "BrutalCompanyMinus";
+        public const string VERSION = "0.13.10";
+        public static readonly Harmony harmony = new Harmony(GUID);
 
         void Awake()
         {

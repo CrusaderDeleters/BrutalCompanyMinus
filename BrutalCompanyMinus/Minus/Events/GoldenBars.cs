@@ -19,19 +19,19 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "Bling Bling!", "It's just like robbing a bank", "I hope this is a sign of good luck", "Are you ready to gain an extra 300+ lbs" };
-            ColorHex = "#00FF00";
-            Type = EventType.VeryGood;
+            weight = 1;
+            descriptions = new List<string>() { "Bling Bling!", "It's just like robbing a bank", "I hope this is a sign of good luck", "Are you ready to gain an extra 300+ lbs" };
+            colorHex = "#00FF00";
+            type = EventType.VeryGood;
 
-            EventsToRemove = new List<string>() { nameof(RealityShift) };
+            eventsToRemove = new List<string>() { nameof(RealityShift) };
 
             scrapTransmutationEvent = new ScrapTransmutationEvent(
                 new Scale(0.5f, 0.008f, 0.5f, 0.9f),
                 new SpawnableItemWithRarity() { spawnableItem = Assets.GetItem(Assets.ItemName.GoldBar), rarity = 100 }
             );
 
-            ScaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
+            scaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
         }
 
         public override bool AddEventIfOnly()

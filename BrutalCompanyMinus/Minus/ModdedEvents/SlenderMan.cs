@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "Childhood creepypasta", "Dont let it get close...", "You feel paranoid" };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 3;
+            descriptions = new List<string>() { "Childhood creepypasta", "Dont let it get close...", "You feel paranoid" };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 "SlendermanEnemy",

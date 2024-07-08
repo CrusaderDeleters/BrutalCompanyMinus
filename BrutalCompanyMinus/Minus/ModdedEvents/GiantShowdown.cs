@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "Attack on titan!!", "Battle of giants", "Take your bets..." };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 3;
+            descriptions = new List<string>() { "Attack on titan!!", "Battle of giants", "Take your bets..." };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 "PinkGiantObj",

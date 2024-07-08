@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 2;
-            Descriptions = new List<string>() { "Everything is golden!!", "Gold rush!", "The nigerian princes stash!" };
-            ColorHex = "#00FF00";
-            Type = EventType.VeryGood;
+            weight = 2;
+            descriptions = new List<string>() { "Everything is golden!!", "Gold rush!", "The nigerian princes stash!" };
+            colorHex = "#00FF00";
+            type = EventType.VeryGood;
 
-            EventsToRemove = new List<string>() { nameof(GoldenBars) };
+            eventsToRemove = new List<string>() { nameof(GoldenBars) };
 
             scrapTransmutationEvent = new ScrapTransmutationEvent(
                 new Scale(0.5f, 0.008f, 0.5f, 0.9f),
@@ -59,9 +59,9 @@ namespace BrutalCompanyMinus.Minus.Events
                 new SpawnableItemWithRarity() { spawnableItem = Assets.GetItem("DuckOfGoldLCGoldScrapMod"), rarity = 1 }
             );
 
-            EventsToRemove = new List<string>() { nameof(RealityShift) };
+            eventsToRemove = new List<string>() { nameof(RealityShift) };
 
-            ScaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
+            scaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
         }
 
         public override bool AddEventIfOnly()

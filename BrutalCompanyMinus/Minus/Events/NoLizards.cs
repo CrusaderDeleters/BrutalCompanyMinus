@@ -18,11 +18,11 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "No lizards", "No immortal things for whatever reason", "No gas gas gas" };
-            ColorHex = "#008000";
-            Type = EventType.Remove;
-            EventsToRemove = new List<string>() { nameof(Lizard) };
+            weight = 1;
+            descriptions = new List<string>() { "No lizards", "No immortal things for whatever reason", "No gas gas gas" };
+            colorHex = "#008000";
+            type = EventType.Remove;
+            eventsToRemove = new List<string>() { nameof(Lizard) };
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.SporeLizard);

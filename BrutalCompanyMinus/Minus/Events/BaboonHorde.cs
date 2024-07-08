@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "You feel outnumbered", "Keep the door's closed.", "Hear their calls, see their shadows cover the land.", "Why are they also inside??" };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 1;
+            descriptions = new List<string>() { "You feel outnumbered", "Keep the door's closed.", "Hear their calls, see their shadows cover the land.", "Why are they also inside??" };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.BaboonHawk,

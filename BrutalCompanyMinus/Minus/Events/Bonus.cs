@@ -19,13 +19,13 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 2;
-            Descriptions = new List<string>() { "Corporate is feeling good today.", "The company is giving you credits for existing", "■ ■ ■", "It's never enough." };
-            ColorHex = "#008000";
-            Type = EventType.Good;
+            weight = 2;
+            descriptions = new List<string>() { "Corporate is feeling good today.", "The company is giving you credits for existing", "■ ■ ■", "It's never enough." };
+            colorHex = "#008000";
+            type = EventType.Good;
 
-            ScaleList.Add(ScaleType.MinCash, new Scale(75.0f, 2.25f, 75.0f, 300.0f));
-            ScaleList.Add(ScaleType.MaxCash, new Scale(125.0f, 3.75f, 125.0f, 400.0f));
+            scaleList.Add(ScaleType.MinCash, new Scale(75.0f, 2.25f, 75.0f, 300.0f));
+            scaleList.Add(ScaleType.MaxCash, new Scale(125.0f, 3.75f, 125.0f, 400.0f));
         }
 
         public override void Execute() => Manager.PayCredits(UnityEngine.Random.Range(Get(ScaleType.MinCash), Get(ScaleType.MaxCash) + 1));

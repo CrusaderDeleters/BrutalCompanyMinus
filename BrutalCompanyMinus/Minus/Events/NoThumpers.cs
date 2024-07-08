@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "No crawlers", "No drifing", "No more running", "No more sharks", "No legless" };
-            ColorHex = "#008000";
-            Type = EventType.Remove;
+            weight = 1;
+            descriptions = new List<string>() { "No crawlers", "No drifing", "No more running", "No more sharks", "No legless" };
+            colorHex = "#008000";
+            type = EventType.Remove;
 
-            EventsToRemove = new List<string>() { nameof(Thumpers), nameof(Hell), nameof(NutSlayer) };
+            eventsToRemove = new List<string>() { nameof(Thumpers), nameof(Hell), nameof(NutSlayer) };
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.Thumper);

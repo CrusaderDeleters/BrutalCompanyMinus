@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "Bug Breach Detected", "The ultimate fine dining experience", "Dont make out with those things" };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 1;
+            descriptions = new List<string>() { "Bug Breach Detected", "The ultimate fine dining experience", "Dont make out with those things" };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
-            EventsToRemove = new List<string>() { nameof(SnareFleas) };
+            eventsToRemove = new List<string>() { nameof(SnareFleas) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.EarthLeviathan,

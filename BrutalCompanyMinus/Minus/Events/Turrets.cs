@@ -18,13 +18,13 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "Turrets!!", "Home defense systems", "Panic and scream", "+Turrets" };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 3;
+            descriptions = new List<string>() { "Turrets!!", "Home defense systems", "Panic and scream", "+Turrets" };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
 
-            ScaleList.Add(ScaleType.MinAmount, new Scale(3.0f, 0.12f, 3.0f, 15.0f));
-            ScaleList.Add(ScaleType.MaxAmount, new Scale(4.0f, 0.16f, 4.0f, 20.0f));
+            scaleList.Add(ScaleType.MinAmount, new Scale(3.0f, 0.12f, 3.0f, 15.0f));
+            scaleList.Add(ScaleType.MaxAmount, new Scale(4.0f, 0.16f, 4.0f, 20.0f));
         }
 
         public override bool AddEventIfOnly() => RoundManager.Instance.currentLevel.spawnableMapObjects.ToList().Exists(x => x.prefabToSpawn.name == Assets.ObjectNameList[Assets.ObjectName.Turret]);

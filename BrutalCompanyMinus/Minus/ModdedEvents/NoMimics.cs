@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            EventsToRemove = new List<string>() { nameof(Hell), nameof(ShyGuy) };
+            eventsToRemove = new List<string>() { nameof(Hell), nameof(ShyGuy) };
 
-            Weight = 1;
-            Descriptions = new List<string>() { "The fire exit's are safe", "No Mimics!" };
-            ColorHex = "#008000";
-            Type = EventType.Remove;
+            weight = 1;
+            descriptions = new List<string>() { "The fire exit's are safe", "No Mimics!" };
+            colorHex = "#008000";
+            type = EventType.Remove;
         }
 
         public override bool AddEventIfOnly() => Compatibility.mimicsPresent;

@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "Mimics!", "The fire exit's are suspicous", "Dont be hasty!" };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 3;
+            descriptions = new List<string>() { "Mimics!", "The fire exit's are suspicous", "Dont be hasty!" };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
         }
 
         public override bool AddEventIfOnly() => Compatibility.mimicsPresent;

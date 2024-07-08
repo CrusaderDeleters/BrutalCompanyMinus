@@ -162,15 +162,15 @@ namespace BrutalCompanyMinus.Minus
             if (_events.Count == 0) return new Events.Nothing();
 
             int WeightedSum = 0;
-            foreach (MEvent e in _events) WeightedSum += e.Weight;
+            foreach (MEvent e in _events) WeightedSum += e.weight;
 
             foreach (MEvent e in _events)
             {
-                if (rng.Next(0, WeightedSum) < e.Weight)
+                if (rng.Next(0, WeightedSum) < e.weight)
                 {
                     return e;
                 }
-                WeightedSum -= e.Weight;
+                WeightedSum -= e.weight;
             }
 
             return _events[_events.Count - 1];
@@ -180,18 +180,20 @@ namespace BrutalCompanyMinus.Minus
         {
             currentEvents.Clear();
 
+            events.RemoveAll(e => e.enabled == false);
+
             List<MEvent> chosenEvents = new List<MEvent>();
             List<MEvent> eventsToChooseForm = new List<MEvent>();
             foreach (MEvent e in events) eventsToChooseForm.Add(e);
 
             // Decide how many events to spawn
             System.Random rng = new System.Random(StartOfRound.Instance.randomMapSeed + 32345 + Environment.TickCount);
-            int eventsToSpawn = (int)MEvent.Scale.Compute(Configuration.eventsToSpawn, MEvent.EventType.Neutral) + RoundManager.Instance.GetRandomWeightedIndex(Configuration.weightsForExtraEvents.IntArray(), rng);
+            int eventsToSpawn = (int)Scale.Compute(Configuration.eventsToSpawn, MEvent.EventType.Neutral) + RoundManager.Instance.GetRandomWeightedIndex(Configuration.weightsForExtraEvents.IntArray(), rng);
             
             foreach(MEvent forcedEvent in forcedEvents)
             {
                 eventsToChooseForm.RemoveAll(x => x.Name() == forcedEvent.Name());
-                foreach(string eventToRemove in forcedEvent.EventsToRemove)
+                foreach(string eventToRemove in forcedEvent.eventsToRemove)
                 {
                     eventsToChooseForm.RemoveAll(x => x.Name() == forcedEvent.Name());
                 }
@@ -217,13 +219,13 @@ namespace BrutalCompanyMinus.Minus
                 // Remove incompatible events from toChooseList
                 int AmountRemoved = 0;
 
-                foreach (string eventToRemove in newEvent.EventsToRemove)
+                foreach (string eventToRemove in newEvent.eventsToRemove)
                 {
                     eventsToChooseForm.RemoveAll(x => x.Name() == eventToRemove);
                     AmountRemoved += chosenEvents.RemoveAll(x => x.Name() == eventToRemove);
                 }
 
-                foreach (string eventToSpawnWith in newEvent.EventsToSpawnWith)
+                foreach (string eventToSpawnWith in newEvent.eventsToSpawnWith)
                 {
                     eventsToChooseForm.RemoveAll(x => x.Name() == eventToSpawnWith);
                     AmountRemoved += chosenEvents.RemoveAll(x => x.Name() == eventToSpawnWith);
@@ -236,7 +238,7 @@ namespace BrutalCompanyMinus.Minus
             List<MEvent> eventsToSpawnWith = new List<MEvent>();
             for (int i = 0; i < chosenEvents.Count; i++)
             {
-                foreach (string eventToSpawnWith in chosenEvents[i].EventsToSpawnWith)
+                foreach (string eventToSpawnWith in chosenEvents[i].eventsToSpawnWith)
                 {
                     int index = eventsToSpawnWith.FindIndex(x => x.Name() == eventToSpawnWith);
                     if (index == -1) eventsToSpawnWith.Add(MEvent.GetEvent(eventToSpawnWith)); // If dosen't exist in list, add.
@@ -259,9 +261,9 @@ namespace BrutalCompanyMinus.Minus
         {
             foreach (MEvent e in currentEvents)
             {
-                if(!e.Executed)
+                if(!e.executed)
                 {
-                    e.Executed = true;
+                    e.executed = true;
                     e.Execute();
                 }
             }
@@ -328,7 +330,7 @@ namespace BrutalCompanyMinus.Minus
             int eventTypeAmount = Configuration.eventTypeScales.Length;
 
             float[] computedScales = new float[eventTypeAmount];
-            for (int i = 0; i < eventTypeAmount; i++) computedScales[i] = MEvent.Scale.Compute(Configuration.eventTypeScales[i]);
+            for (int i = 0; i < eventTypeAmount; i++) computedScales[i] = Scale.Compute(Configuration.eventTypeScales[i]);
 
             float eventTypeWeightSum = 0;
             for (int i = 0; i < eventTypeAmount; i++) eventTypeWeightSum += computedScales[i];
@@ -345,7 +347,7 @@ namespace BrutalCompanyMinus.Minus
                 Log.LogInfo($"Set eventType weight for {((MEvent.EventType)Enum.ToObject(typeof(MEvent.EventType), i)).ToString()} to {newEventWeights[i]}");
             }
 
-            foreach(MEvent e in events) e.Weight = newEventWeights[(int)e.Type];
+            foreach(MEvent e in events) e.weight = newEventWeights[(int)e.type];
         }
 
         internal static void UpdateEventTypeCounts()
@@ -354,7 +356,7 @@ namespace BrutalCompanyMinus.Minus
 
             eventTypeCount = new float[eventTypeAmount];
             for (int i = 0; i < eventTypeAmount; i++) eventTypeCount[i] = 0.0f;
-            foreach (MEvent e in events) eventTypeCount[(int)e.Type]++;
+            foreach (MEvent e in events) eventTypeCount[(int)e.type]++;
 
             eventTypeSum = 0.0f;
             for (int i = 0; i < eventTypeAmount; i++) eventTypeSum += eventTypeCount[i];
@@ -366,7 +368,7 @@ namespace BrutalCompanyMinus.Minus
             currentEventDescriptions.Clear();
             foreach(MEvent e in events)
             {
-                currentEventDescriptions.Add($"<color={e.ColorHex}>{e.Descriptions[UnityEngine.Random.Range(0, e.Descriptions.Count)]}</color>");
+                currentEventDescriptions.Add($"<color={e.colorHex}>{e.descriptions[UnityEngine.Random.Range(0, e.descriptions.Count)]}</color>");
             }
         }
 
@@ -423,7 +425,8 @@ namespace BrutalCompanyMinus.Minus
             }
         }
 
-        internal class CustomEvents
+        internal class 
+            CustomEvents
         {
             public ConfigFile configFile;
 
@@ -472,15 +475,15 @@ namespace BrutalCompanyMinus.Minus
             }
             
             // Difficulty modifications
-            Manager.AddEnemyHp((int)MEvent.Scale.Compute(Configuration.enemyBonusHpScaling));
-            Manager.AddInsideSpawnChance(newLevel, MEvent.Scale.Compute(Configuration.insideSpawnChanceAdditive));
-            Manager.AddOutsideSpawnChance(newLevel, MEvent.Scale.Compute(Configuration.outsideSpawnChanceAdditive));
-            Manager.MultiplySpawnChance(newLevel, MEvent.Scale.Compute(Configuration.spawnChanceMultiplierScaling));
-            Manager.MultiplySpawnCap(MEvent.Scale.Compute(Configuration.spawnCapMultiplier));
-            Manager.AddInsidePower((int)MEvent.Scale.Compute(Configuration.insideEnemyMaxPowerCountScaling));
-            Manager.AddOutsidePower((int)MEvent.Scale.Compute(Configuration.outsideEnemyPowerCountScaling));
-            Manager.scrapValueMultiplier *= MEvent.Scale.Compute(Configuration.scrapValueMultiplier);
-            Manager.scrapAmountMultiplier *= MEvent.Scale.Compute(Configuration.scrapAmountMultiplier);
+            Manager.AddEnemyHp((int)Scale.Compute(Configuration.enemyBonusHpScaling));
+            Manager.AddInsideSpawnChance(newLevel, Scale.Compute(Configuration.insideSpawnChanceAdditive));
+            Manager.AddOutsideSpawnChance(newLevel, Scale.Compute(Configuration.outsideSpawnChanceAdditive));
+            Manager.MultiplySpawnChance(newLevel, Scale.Compute(Configuration.spawnChanceMultiplierScaling));
+            Manager.MultiplySpawnCap(Scale.Compute(Configuration.spawnCapMultiplier));
+            Manager.AddInsidePower((int)Scale.Compute(Configuration.insideEnemyMaxPowerCountScaling));
+            Manager.AddOutsidePower((int)Scale.Compute(Configuration.outsideEnemyPowerCountScaling));
+            Manager.scrapValueMultiplier *= Scale.Compute(Configuration.scrapValueMultiplier);
+            Manager.scrapAmountMultiplier *= Scale.Compute(Configuration.scrapAmountMultiplier);
 
             // Choose and apply events
             if (!Configuration.useCustomWeights.Value) UpdateAllEventWeights();
@@ -498,7 +501,7 @@ namespace BrutalCompanyMinus.Minus
             {
                 forcedEvent.Execute();
 
-                foreach(string additionalEvent in forcedEvent.EventsToSpawnWith)
+                foreach(string additionalEvent in forcedEvent.eventsToSpawnWith)
                 {
                     MEvent.GetEvent(additionalEvent).Execute();
                 }

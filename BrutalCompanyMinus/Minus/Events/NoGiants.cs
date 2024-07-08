@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "No stomping", "Eddie hall isn't allowed here", "No creature's with an IQ of a toddler here, I hope." };
-            ColorHex = "#008000";
-            Type = EventType.Remove;
+            weight = 1;
+            descriptions = new List<string>() { "No stomping", "Eddie hall isn't allowed here", "No creature's with an IQ of a toddler here, I hope." };
+            colorHex = "#008000";
+            type = EventType.Remove;
 
-            EventsToRemove = new List<string>() { nameof(ForestGiant), nameof(Hell), nameof(SirenHead), nameof(RollingGiants) };
+            eventsToRemove = new List<string>() { nameof(ForestGiant), nameof(Hell), nameof(SirenHead), nameof(RollingGiants) };
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.ForestKeeper) || Manager.SpawnExists("PinkGiantObj") || Manager.SpawnExists("RollingGiant_EnemyType") || Manager.SpawnExists("RollingGiant_EnemyType_Outside") || Manager.SpawnExists("RollingGiant_EnemyType_Outside_Daytime") || Manager.SpawnExists("SirenHead");

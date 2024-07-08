@@ -18,15 +18,15 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "Most scrap has transmuted into something big...", "Everything is heavy...", "Bring your carts!!!", "This is going to be a two-handed job" };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 1;
+            descriptions = new List<string>() { "Most scrap has transmuted into something big...", "Everything is heavy...", "Bring your carts!!!", "This is going to be a two-handed job" };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
-            ScaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
-            ScaleList.Add(ScaleType.Percentage, new Scale(0.5f, 0.005f, 0.5f, 0.75f));
+            scaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
+            scaleList.Add(ScaleType.Percentage, new Scale(0.5f, 0.005f, 0.5f, 0.75f));
 
-            EventsToRemove = new List<string>() { nameof(RealityShift) };
+            eventsToRemove = new List<string>() { nameof(RealityShift) };
         }
 
         public override bool AddEventIfOnly() // If two-handed item exists in item pool

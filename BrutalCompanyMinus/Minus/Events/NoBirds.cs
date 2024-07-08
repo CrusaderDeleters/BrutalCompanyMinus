@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "No birds", "No birbs", "No flower snakes!" };
-            ColorHex = "#008000";
-            Type = EventType.Remove;
+            weight = 1;
+            descriptions = new List<string>() { "No birds", "No birbs", "No flower snakes!" };
+            colorHex = "#008000";
+            type = EventType.Remove;
 
-            EventsToRemove = new List<string>() { nameof(Birds), nameof(Hell), nameof(FlowerSnake) };
+            eventsToRemove = new List<string>() { nameof(Birds), nameof(Hell), nameof(FlowerSnake) };
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.Manticoil) || Manager.SpawnExists(Assets.EnemyName.FlowerSnake);

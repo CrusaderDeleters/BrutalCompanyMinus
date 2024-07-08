@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            EventsToRemove = new List<string>() { nameof(Hell), nameof(NoFiend) };
+            eventsToRemove = new List<string>() { nameof(Hell), nameof(NoFiend) };
 
-            Weight = 1;
-            Descriptions = new List<string>() { "No Fiends", "No jumpscares... I think", "No thing", "Flashing is allowed on this moon!!!" };
-            ColorHex = "#008000";
-            Type = EventType.Remove;
+            weight = 1;
+            descriptions = new List<string>() { "No Fiends", "No jumpscares... I think", "No thing", "Flashing is allowed on this moon!!!" };
+            colorHex = "#008000";
+            type = EventType.Remove;
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists("TheFiend") && Compatibility.theFiendPresent;

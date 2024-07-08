@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "It's very slow..", "Looks pretty innocent", "A moving thermonuclear bomb" };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 3;
+            descriptions = new List<string>() { "It's very slow..", "Looks pretty innocent", "A moving thermonuclear bomb" };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 "ImmortalSnail.EnemyType",

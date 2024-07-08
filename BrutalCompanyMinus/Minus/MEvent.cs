@@ -1,53 +1,69 @@
-﻿using System;
+﻿using BepInEx.Configuration;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static BrutalCompanyMinus.Helper;
+using static BrutalCompanyMinus.Configuration;
+using LethalConfig;
+using LethalConfig.ConfigItems;
+using LethalConfig.ConfigItems.Options;
+using System.Reflection;
+using System.Linq;
+using System.ComponentModel;
 
 namespace BrutalCompanyMinus.Minus
 {
     public class MEvent
     {
+
+        internal ConfigEntry<string> descriptionsConfigEntry;
         /// <summary>
         /// This is the text displayed in the UI.
         /// </summary>
-        public List<string> Descriptions = new List<string>() { "" };
+        public List<string> descriptions = new List<string>() { "" };
 
+        internal ConfigEntry<string> colorHexConfigEntry;
         /// <summary>
         /// The color the event will be displayed in the UI in hex.
         /// </summary>
-        public string ColorHex = "#FFFFFF";
+        public string colorHex = "#FFFFFF";
 
+        internal ConfigEntry<int> weightConfigEntry;
         /// <summary>
         /// This can be ignored, this value is only used when Use_Custom_Weights in the config is set to true.
         /// </summary>
-        public int Weight = 1;
+        public int weight = 1;
 
+        internal ConfigEntry<EventType> typeConfigEntry;
         /// <summary>
         /// Set in what your opinion the severity of this event.
         /// </summary>
-        public EventType Type = EventType.Neutral;
+        public EventType type = EventType.Neutral;
 
+        internal ConfigEntry<bool> enabledConfigEntry;
         /// <summary>
         /// If true event will appear, if false event will not appear.
         /// </summary>
-        public bool Enabled = true;
+        public bool enabled = true;
 
+        internal Dictionary<ScaleType, ConfigEntry<string>> scaleListConfigEntry = new Dictionary<ScaleType, ConfigEntry<string>>();
         /// <summary>
         /// Set scales in Initalize() and then use Getf(ScaleType) or Get(ScaleType) to compute scale in Execute(), this will also generate automatically generate in the config.
         /// </summary>
-        public Dictionary<ScaleType, Scale> ScaleList = new Dictionary<ScaleType, Scale>();
+        public Dictionary<ScaleType, Scale> scaleList = new Dictionary<ScaleType, Scale>();
 
+        internal ConfigEntry<string> eventsToRemoveConfigEntry;
         /// <summary>
         /// Set this in Initalize() to specify events to prevent from occuring.
         /// </summary>
-        public List<string> EventsToRemove = new List<string>();
+        public List<string> eventsToRemove = new List<string>();
 
+        internal ConfigEntry<string> eventsToSpawnWithConfigEntry;
         /// <summary>
         /// Set this in Initalize() to specify events to spawn with, these wont be shown in the UI.
         /// </summary>
-        public List<string> EventsToSpawnWith = new List<string>();
-
-        internal bool Executed = false;
+        public List<string> eventsToSpawnWith = new List<string>();
 
         /// <summary>
         /// Set this in Initalize() to make monster event(s).
@@ -58,6 +74,8 @@ namespace BrutalCompanyMinus.Minus
         /// Set this in Initalize() to make a transmutation event.
         /// </summary>
         public ScrapTransmutationEvent scrapTransmutationEvent = new ScrapTransmutationEvent(new Scale(0.0f, 0.0f, 0.0f, 0.0f));
+
+        internal bool executed = false;
 
         /// <summary>
         /// This is the event type.
@@ -88,36 +106,6 @@ namespace BrutalCompanyMinus.Minus
             { ScaleType.MaxInsideEnemyCount, "Changes max amount of inside enemies spawnable. " }, { ScaleType.MaxOutsideEnemyCount, "Changes max amount of outside enemies spawnable. " }, { ScaleType.MinPercentageCut, "Minimum possible percentage cut." }, { ScaleType.MaxPercentageCut, "Maximum possible percentage cut." },
             { ScaleType.MinAmount, "Minimum amount of something to be chosen." }, { ScaleType.MaxAmount, "Maximum amount of something to be chosen." }, { ScaleType.Percentage, "This value goes between 0.0 to 1.0." }
         };
-
-        /// <summary>
-        /// This is used to scale events by difficulty.
-        /// </summary>
-        public struct Scale
-        {
-            public float Base, Increment, MinCap, MaxCap;
-
-            public Scale(float Base, float Increment, float MinCap, float MaxCap)
-            {
-                this.Base = Base;
-                this.Increment = Increment;
-                this.MinCap = MinCap;
-                this.MaxCap = MaxCap;
-            }
-
-            public static float Compute(Scale scale, EventType Type = EventType.Neutral)
-            {
-                float increment = scale.Increment;
-
-                if (Type == EventType.VeryBad || Type == EventType.Bad) increment = scale.Increment * Configuration.badEventIncrementMultiplier.Value;
-                if (Type == EventType.VeryGood || Type == EventType.Good) increment = scale.Increment * Configuration.goodEventIncrementMultiplier.Value;
-
-                return Mathf.Clamp(scale.Base + (increment * Manager.difficulty), scale.MinCap, Configuration.ignoreMaxCap.Value ? 99999999999.0f : scale.MaxCap);
-            }
-
-            public float Computef(EventType type) => Compute(this, type);
-
-            public int Compute(EventType type) => (int)Compute(this, type);
-        }
 
         /// <summary>
         /// This is used to identify said event, preferably use nameof(thisClass) for name.
@@ -160,7 +148,7 @@ namespace BrutalCompanyMinus.Minus
         {
             try
             {
-                return Scale.Compute(ScaleList[scaleType], Type);
+                return Scale.Compute(scaleList[scaleType], type);
             } catch
             {
                 Log.LogError(string.Format("Scalar '{0}' for '{1}' not found, returning 0.", scaleType.ToString(), Name()));
@@ -203,70 +191,80 @@ namespace BrutalCompanyMinus.Minus
             return new Events.Nothing();
         }
 
-        /// <summary>
-        /// This is used to describe a basic monster event.
-        /// </summary>
-        public class MonsterEvent
+        internal void InitalizeBasicEntries(ConfigFile to, ModInfo info)
         {
-            public EnemyType enemy;
+            descriptionsConfigEntry = to.Bind(Name(), "Descriptions", ListToString(descriptions, "|"), "Seperated by |");
+            descriptions = StringToList(descriptionsConfigEntry.Value);
+            descriptionsConfigEntry.SettingChanged += (o, e) => descriptions = StringToList(descriptionsConfigEntry.Value);
+            AddConfigForLethalConfig(new TextInputFieldConfigItem(descriptionsConfigEntry, false), info);
 
-            public Scale insideSpawnRarity, outsideSpawnRarity, minInside, maxInside, minOutside, maxOutside;
+            colorHexConfigEntry = to.Bind(Name(), "Color Hex", colorHex);
+            colorHex = colorHexConfigEntry.Value;
+            colorHexConfigEntry.SettingChanged += (o, e) => colorHex = colorHexConfigEntry.Value;
+            AddConfigForLethalConfig(new TextInputFieldConfigItem(colorHexConfigEntry, false), info);
 
-            public EventType eventType;
+            weightConfigEntry = to.Bind(Name(), "Custom Weight", weight, "If you want to use custom weights change 'Use custom weights'? setting in '__Event Settings' to true.");
+            weight = weightConfigEntry.Value;
+            weightConfigEntry.SettingChanged += (o, e) => weight = weightConfigEntry.Value;
+            AddConfigForLethalConfig(new IntInputFieldConfigItem(weightConfigEntry, false), info);
 
-            public MonsterEvent(EnemyType enemy, Scale insideSpawnRarity, Scale outsideSpawnRarity, Scale minInside, Scale maxInside, Scale minOutside, Scale maxOutside)
+            typeConfigEntry = to.Bind(Name(), "Event Type", type);
+            type = typeConfigEntry.Value;
+            typeConfigEntry.SettingChanged += (o, e) => type = typeConfigEntry.Value;
+            AddConfigForLethalConfig(new EnumDropDownConfigItem<EventType>(typeConfigEntry, false), info);
+
+            enabledConfigEntry = to.Bind(Name(), "Event Enabled?", enabled, "Setting this to false will stop the event from occuring.");
+            enabled = enabledConfigEntry.Value;
+            enabledConfigEntry.SettingChanged += (o, e) => enabled = enabledConfigEntry.Value;
+            AddConfigForLethalConfig(new BoolCheckBoxConfigItem(enabledConfigEntry, false), info);
+
+            List<KeyValuePair<ScaleType, Scale>> scaleListed = scaleList.ToList();
+            for (int i = 0; i < scaleList.Count; i++)
             {
-                this.enemy = enemy;
-                assignRarities(insideSpawnRarity, outsideSpawnRarity, minInside, maxInside, minOutside, maxOutside);
+                KeyValuePair<ScaleType, Scale> scale = scaleListed[i];
+                scaleListConfigEntry.Add(scale.Key, to.Bind(Name(), scale.Key.ToString(), GetStringFromScale(scale.Value), ScaleInfoList[scale.Key] + "   " + scaleDescription));
+                scaleList[scale.Key] = GetScale(scaleListConfigEntry[scale.Key].Value);
+                scaleListConfigEntry[scale.Key].SettingChanged += (o, e) => scaleList[scale.Key] = GetScale(scaleListConfigEntry[scale.Key].Value);
+                AddConfigForLethalConfig(new TextInputFieldConfigItem(scaleListConfigEntry[scale.Key], false), info);
             }
 
-            public MonsterEvent(Assets.EnemyName enemyName, Scale insideSpawnRarity, Scale outsideSpawnRarity, Scale minInside, Scale maxInside, Scale minOutside, Scale maxOutside)
-            {
-                this.enemy = Assets.GetEnemy(enemyName);
-                assignRarities(insideSpawnRarity, outsideSpawnRarity, minInside, maxInside, minOutside, maxOutside);
-            }
+            eventsToRemoveConfigEntry = to.Bind(Name(), "Events To Remove", ListToString(eventsToRemove, ", "), "Will prevent said event(s) from occuring.");
+            eventsToRemove = ListToStrings(eventsToRemoveConfigEntry.Value);
+            eventsToRemoveConfigEntry.SettingChanged += (o, e) => eventsToRemove = ListToStrings(eventsToRemoveConfigEntry.Value);
+            AddConfigForLethalConfig(new TextInputFieldConfigItem(eventsToRemoveConfigEntry, false), info);
 
-            public MonsterEvent(string enemyName, Scale insideSpawnRarity, Scale outsideSpawnRarity, Scale minInside, Scale maxInside, Scale minOutside, Scale maxOutside)
-            {
-                this.enemy = Assets.GetEnemy(enemyName);
-                assignRarities(insideSpawnRarity, outsideSpawnRarity, minInside, maxInside, minOutside, maxOutside);
-            }
+            eventsToSpawnWithConfigEntry = to.Bind(Name(), "Events To Spawn With", ListToString(eventsToSpawnWith, ", "), "Will spawn said events(s).");
+            eventsToSpawnWith = ListToStrings(eventsToSpawnWithConfigEntry.Value);
+            eventsToSpawnWithConfigEntry.SettingChanged += (o, e) => eventsToSpawnWith = ListToStrings(eventsToSpawnWithConfigEntry.Value);
+            AddConfigForLethalConfig(new TextInputFieldConfigItem(eventsToSpawnWithConfigEntry, false), info);
 
-            private void assignRarities(Scale insideSpawnRarity, Scale outsideSpawnRarity, Scale minInside, Scale maxInside, Scale minOutside, Scale maxOutside)
-            {
-                this.insideSpawnRarity = insideSpawnRarity;
-                this.outsideSpawnRarity = outsideSpawnRarity;
-                this.minInside = minInside;
-                this.maxInside = maxInside;
-                this.minOutside = minOutside;
-                this.maxOutside = maxOutside;
-            }
-
-            public void Execute()
-            {
-                Manager.AddEnemyToPoolWithRarity(ref RoundManager.Instance.currentLevel.Enemies, enemy, insideSpawnRarity.Compute(eventType));
-                Manager.AddEnemyToPoolWithRarity(ref RoundManager.Instance.currentLevel.OutsideEnemies, enemy, outsideSpawnRarity.Compute(eventType));
-                Manager.Spawn.InsideEnemies(enemy, UnityEngine.Random.Range(minInside.Compute(eventType), maxInside.Compute(eventType) + 1)); 
-                Manager.Spawn.OutsideEnemies(enemy, UnityEngine.Random.Range(minOutside.Compute(eventType), maxOutside.Compute(eventType) + 1));
-            }
         }
 
-        /// <summary>
-        /// This is used to describe a scrap transmutation event.
-        /// </summary>
-        public class ScrapTransmutationEvent
+        public virtual void InitalizeConfigEntries(ConfigFile to, ModInfo info)
         {
-            public Scale amount; // Between 0.0 to 1.0
+            InitalizeBasicEntries(to, info);
 
-            public SpawnableItemWithRarity[] items;
-
-            public ScrapTransmutationEvent(Scale amount, params SpawnableItemWithRarity[] items)
+            foreach(MonsterEvent monsterEvent in monsterEvents)
             {
-                this.items = items;
-                this.amount = amount;
+                monsterEvent.IniatlizeConfig(Name(), to, info);
             }
 
-            public void Execute() => Manager.TransmuteScrap(amount.Computef(EventType.Neutral), items);
+            if (scrapTransmutationEvent.items.Length > 0)
+            {
+                scrapTransmutationEvent.amountConfigEntry = to.Bind(Name(), "Percentage", GetStringFromScale(scrapTransmutationEvent.amount), $"{ScaleInfoList[ScaleType.Percentage]}   {scaleDescription}");
+                scrapTransmutationEvent.amount = GetScale(scrapTransmutationEvent.amountConfigEntry.Value);
+                scrapTransmutationEvent.amountConfigEntry.SettingChanged += (o, e) => scrapTransmutationEvent.amount = GetScale(scrapTransmutationEvent.amountConfigEntry.Value);
+                AddConfigForLethalConfig(new TextInputFieldConfigItem(scrapTransmutationEvent.amountConfigEntry, false), info);
+
+                for (int i = 0; i < scrapTransmutationEvent.items.Length; i++)
+                {
+                    int k = i;
+                    scrapTransmutationEvent.itemsConfigEntry.Add(to.Bind(Name(), $"Item {k}", SpawnableItemToString(scrapTransmutationEvent.items[k]), $"{ScaleInfoList[ScaleType.Percentage]}   {scaleDescription}"));
+                    scrapTransmutationEvent.items[k] = StringToSpawnableItem(scrapTransmutationEvent.itemsConfigEntry[k].Value);
+                    scrapTransmutationEvent.itemsConfigEntry[k].SettingChanged += (o, e) => scrapTransmutationEvent.items[k] = StringToSpawnableItem(scrapTransmutationEvent.itemsConfigEntry[k].Value);
+                    AddConfigForLethalConfig(new TextInputFieldConfigItem(scrapTransmutationEvent.itemsConfigEntry[k], false), info);
+                }
+            }
         }
     }
 }

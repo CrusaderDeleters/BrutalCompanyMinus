@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using BepInEx.Configuration;
+using HarmonyLib;
 using System;
 using Unity.Netcode;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
     {
         public Transform transform;
 
-        public static float speed = 100.0f;
+        public static ConfigEntry<float> speed;
 
         private float timeTillExplode = 1.0f;
 
@@ -19,12 +20,12 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
         private void Start()
         {
             transform.LookAt(target);
-            timeTillExplode = Vector3.Distance(transform.position, target) / speed;
+            timeTillExplode = Vector3.Distance(transform.position, target) / speed.Value;
         }
 
         private void Update()
         {
-            transform.position += transform.forward * Time.deltaTime * speed;
+            transform.position += transform.forward * Time.deltaTime * speed.Value;
             if (timeTillExplode > 0)
             {
                 timeTillExplode -= Time.deltaTime;

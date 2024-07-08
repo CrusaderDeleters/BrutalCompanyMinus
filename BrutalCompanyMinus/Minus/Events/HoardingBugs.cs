@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "They look cute.", "Best served bonked", "Pretty innocent" };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 3;
+            descriptions = new List<string>() { "They look cute.", "Best served bonked", "Pretty innocent" };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
 
-            EventsToSpawnWith = new List<string>() { nameof(ScarceOutsideScrap) };
+            eventsToSpawnWith = new List<string>() { nameof(ScarceOutsideScrap) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.HoardingBug,

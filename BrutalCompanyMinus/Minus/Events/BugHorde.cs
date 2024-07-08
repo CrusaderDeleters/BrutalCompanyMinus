@@ -18,13 +18,13 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "Theres too many of them...", "You better be ready for this", "Which ones explode?", "A buzzing doom approaches", "Best with served with yippeeeee mod" };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 1;
+            descriptions = new List<string>() { "Theres too many of them...", "You better be ready for this", "Which ones explode?", "A buzzing doom approaches", "Best with served with yippeeeee mod" };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
-            EventsToRemove = new List<string>() { nameof(HoardingBugs), nameof(KamikazieBugs) };
-            EventsToSpawnWith = new List<string> { nameof(ScarceOutsideScrap) };
+            eventsToRemove = new List<string>() { nameof(HoardingBugs), nameof(KamikazieBugs) };
+            eventsToSpawnWith = new List<string> { nameof(ScarceOutsideScrap) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.HoardingBug,

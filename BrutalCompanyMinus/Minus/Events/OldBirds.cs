@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "Who put that thing in there??", "Mentally deranged toddlers", "Does the lighnting kill them?" };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 1;
+            descriptions = new List<string>() { "Who put that thing in there??", "Mentally deranged toddlers", "Does the lighnting kill them?" };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
-            EventsToSpawnWith = new List<string>() { nameof(Landmines), nameof(OutsideLandmines) };
+            eventsToSpawnWith = new List<string>() { nameof(Landmines), nameof(OutsideLandmines) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.OldBird,

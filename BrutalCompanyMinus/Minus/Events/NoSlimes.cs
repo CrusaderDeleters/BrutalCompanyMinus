@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "No goo", "No slimes", "A mysterious force repels slimes", "The absence of slimes bring a calm to this planet." };
-            ColorHex = "#008000";
-            Type = EventType.Remove;
+            weight = 1;
+            descriptions = new List<string>() { "No goo", "No slimes", "A mysterious force repels slimes", "The absence of slimes bring a calm to this planet." };
+            colorHex = "#008000";
+            type = EventType.Remove;
 
-            EventsToRemove = new List<string>() { nameof(Slimes), nameof(Hell) };
+            eventsToRemove = new List<string>() { nameof(Slimes), nameof(Hell) };
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.Hygrodere);

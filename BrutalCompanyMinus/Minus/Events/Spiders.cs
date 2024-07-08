@@ -18,13 +18,13 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "Your skin crawls...", "Not for those with arachnophobia", "Bring your hoover" };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 3;
+            descriptions = new List<string>() { "Your skin crawls...", "Not for those with arachnophobia", "Bring your hoover" };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
 
-            EventsToRemove = new List<string>() { nameof(Trees), nameof(LeaflessTrees) };
-            EventsToSpawnWith = new List<string>() { nameof(LeaflessBrownTrees) };
+            eventsToRemove = new List<string>() { nameof(Trees), nameof(LeaflessTrees) };
+            eventsToSpawnWith = new List<string>() { nameof(LeaflessBrownTrees) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.BunkerSpider,

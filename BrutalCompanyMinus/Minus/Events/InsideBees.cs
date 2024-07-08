@@ -19,12 +19,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "BEES!! wait...", "The facility is abuzz!", "Bee careful", "The inside is sweet", "Why was the bee fired from the barbershop? He only knew how to give a buzz cut." };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 1;
+            descriptions = new List<string>() { "BEES!! wait...", "The facility is abuzz!", "Bee careful", "The inside is sweet", "Why was the bee fired from the barbershop? He only knew how to give a buzz cut." };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
-            EventsToRemove = new List<string>() { nameof(Bees) };
+            eventsToRemove = new List<string>() { nameof(Bees) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.CircuitBee,
@@ -36,19 +36,19 @@ namespace BrutalCompanyMinus.Minus.Events
                 new Scale(5.0f, 0.1f, 5.0f, 15.0f))
             };
 
-            ScaleList.Add(ScaleType.DaytimeEnemyRarity, new Scale(20.0f, 0.8f, 20.0f, 100.0f));
+            scaleList.Add(ScaleType.DaytimeEnemyRarity, new Scale(20.0f, 0.8f, 20.0f, 100.0f));
         }
 
         public override void Execute()
         {
             EnemyType bee = Assets.GetEnemy(Assets.EnemyName.CircuitBee);
 
-            Manager.AddEnemyToPoolWithRarity(ref RoundManager.Instance.currentLevel.Enemies, bee, monsterEvents[0].insideSpawnRarity.Compute(Type));
-            Manager.AddEnemyToPoolWithRarity(ref RoundManager.Instance.currentLevel.OutsideEnemies, bee, monsterEvents[0].outsideSpawnRarity.Compute(Type));
+            Manager.AddEnemyToPoolWithRarity(ref RoundManager.Instance.currentLevel.Enemies, bee, monsterEvents[0].insideSpawnRarity.Compute(type));
+            Manager.AddEnemyToPoolWithRarity(ref RoundManager.Instance.currentLevel.OutsideEnemies, bee, monsterEvents[0].outsideSpawnRarity.Compute(type));
             Manager.AddEnemyToPoolWithRarity(ref RoundManager.Instance.currentLevel.DaytimeEnemies, bee, Get(ScaleType.DaytimeEnemyRarity));
 
-            Manager.Spawn.InsideEnemies(bee, UnityEngine.Random.Range(monsterEvents[0].minInside.Compute(Type), monsterEvents[0].maxInside.Compute(Type) + 1), 30.0f);
-            Manager.Spawn.OutsideEnemies(bee, UnityEngine.Random.Range(monsterEvents[0].minOutside.Compute(Type), monsterEvents[0].maxOutside.Compute(Type) + 1));
+            Manager.Spawn.InsideEnemies(bee, UnityEngine.Random.Range(monsterEvents[0].minInside.Compute(type), monsterEvents[0].maxInside.Compute(type) + 1), 30.0f);
+            Manager.Spawn.OutsideEnemies(bee, UnityEngine.Random.Range(monsterEvents[0].minOutside.Compute(type), monsterEvents[0].maxOutside.Compute(type) + 1));
         }
     }
 }

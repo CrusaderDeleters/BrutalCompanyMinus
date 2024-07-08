@@ -20,13 +20,13 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "The ship has arrived a little late.", "Warp drive failed!", "Behind schedule." };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 1;
+            descriptions = new List<string>() { "The ship has arrived a little late.", "Warp drive failed!", "Behind schedule." };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
 
-            ScaleList.Add(ScaleType.MinAmount, new Scale(50.0f, 1.0f, 50.0f, 150.0f));
-            ScaleList.Add(ScaleType.MaxAmount, new Scale(60.0f, 1.2f, 60.0f, 180.0f));
+            scaleList.Add(ScaleType.MinAmount, new Scale(50.0f, 1.0f, 50.0f, 150.0f));
+            scaleList.Add(ScaleType.MaxAmount, new Scale(60.0f, 1.2f, 60.0f, 180.0f));
         }
 
         public override void Execute() => Net.Instance.MoveTimeServerRpc(UnityEngine.Random.Range(Getf(ScaleType.MinAmount), Getf(ScaleType.MaxAmount)));

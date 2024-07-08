@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "It's holiday season", "All the holidays!", "Easter, Halloween and Christmas all in one day." };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 3;
+            descriptions = new List<string>() { "It's holiday season", "All the holidays!", "Easter, Halloween and Christmas all in one day." };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.NutCracker,
@@ -40,7 +40,7 @@ namespace BrutalCompanyMinus.Minus.Events
                 new Scale(0.0f, 0.0f, 0.0f, 0.0f))
             };
 
-            EventsToRemove = new List<string>() { nameof(Trees), nameof(LeaflessTrees), nameof(LeaflessBrownTrees) };
+            eventsToRemove = new List<string>() { nameof(Trees), nameof(LeaflessTrees), nameof(LeaflessBrownTrees) };
 
             scrapTransmutationEvent = new ScrapTransmutationEvent(
                 new Scale(0.5f, 0.008f, 0.5f, 0.9f),
@@ -48,9 +48,9 @@ namespace BrutalCompanyMinus.Minus.Events
                 new SpawnableItemWithRarity() { spawnableItem = Assets.GetItem(Assets.ItemName.Gift), rarity = 60 }
             );
 
-            ScaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
-            ScaleList.Add(ScaleType.MinDensity, new Scale(0.0018f, 0.0f, 0.0018f, 0.0018f));
-            ScaleList.Add(ScaleType.MaxDensity, new Scale(0.0025f, 0.0f, 0.0025f, 0.0025f));
+            scaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
+            scaleList.Add(ScaleType.MinDensity, new Scale(0.0018f, 0.0f, 0.0018f, 0.0018f));
+            scaleList.Add(ScaleType.MaxDensity, new Scale(0.0025f, 0.0f, 0.0025f, 0.0025f));
         }
 
         public override bool AddEventIfOnly()

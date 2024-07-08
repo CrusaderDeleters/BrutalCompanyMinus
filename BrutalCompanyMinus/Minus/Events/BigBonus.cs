@@ -18,15 +18,15 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "Corporate is very pleased", "The company has sent you a stimulus check", "Yippeeee" };
-            ColorHex = "#00FF00";
-            Type = EventType.VeryGood;
+            weight = 1;
+            descriptions = new List<string>() { "Corporate is very pleased", "The company has sent you a stimulus check", "Yippeeee" };
+            colorHex = "#00FF00";
+            type = EventType.VeryGood;
 
-            EventsToRemove = new List<string>() { nameof(Bonus) };
+            eventsToRemove = new List<string>() { nameof(Bonus) };
 
-            ScaleList.Add(ScaleType.MinCash, new Scale(330.0f, 7.7f, 330.0f, 1100.0f));
-            ScaleList.Add(ScaleType.MaxCash, new Scale(400.0f, 10.5f, 400.0f, 1450.0f));
+            scaleList.Add(ScaleType.MinCash, new Scale(330.0f, 7.7f, 330.0f, 1100.0f));
+            scaleList.Add(ScaleType.MaxCash, new Scale(400.0f, 10.5f, 400.0f, 1450.0f));
         }
 
         public override void Execute() => Manager.PayCredits(UnityEngine.Random.Range(Get(ScaleType.MinCash), Get(ScaleType.MaxCash) + 1));

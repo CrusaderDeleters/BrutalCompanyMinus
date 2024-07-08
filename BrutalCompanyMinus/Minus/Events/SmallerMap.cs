@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 2;
-            Descriptions = new List<string>() { "This facility is smaller.", "Less time running around", "This facility is more compact" };
-            ColorHex = "#008000";
-            Type = EventType.Good;
+            weight = 2;
+            descriptions = new List<string>() { "This facility is smaller.", "Less time running around", "This facility is more compact" };
+            colorHex = "#008000";
+            type = EventType.Good;
 
-            ScaleList.Add(ScaleType.FactorySize, new Scale(0.75f, 0.0f, 0.75f, 0.75f));
+            scaleList.Add(ScaleType.FactorySize, new Scale(0.75f, 0.0f, 0.75f, 0.75f));
         }
 
         public override void Execute() => Manager.currentLevel.factorySizeMultiplier *= Getf(ScaleType.FactorySize);

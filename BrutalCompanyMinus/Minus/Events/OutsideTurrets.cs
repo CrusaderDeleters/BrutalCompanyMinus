@@ -19,16 +19,16 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "The turrets blend in with the trees...", "I hope you enjoy getting shot", "A beautiful day to go outside." };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 3;
+            descriptions = new List<string>() { "The turrets blend in with the trees...", "I hope you enjoy getting shot", "A beautiful day to go outside." };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
 
-            EventsToSpawnWith = new List<string>() { nameof(Trees) };
-            EventsToRemove = new List<string>() { nameof(LeaflessBrownTrees), nameof(LeaflessTrees) };
+            eventsToSpawnWith = new List<string>() { nameof(Trees) };
+            eventsToRemove = new List<string>() { nameof(LeaflessBrownTrees), nameof(LeaflessTrees) };
 
-            ScaleList.Add(ScaleType.MinDensity, new Scale(0.0008f, 0.000024f, 0.0008f, 0.0032f));
-            ScaleList.Add(ScaleType.MaxDensity, new Scale(0.0012f, 0.000036f, 0.0012f, 0.0048f));
+            scaleList.Add(ScaleType.MinDensity, new Scale(0.0008f, 0.000024f, 0.0008f, 0.0032f));
+            scaleList.Add(ScaleType.MaxDensity, new Scale(0.0012f, 0.000036f, 0.0012f, 0.0048f));
         }
 
         public override void Execute()

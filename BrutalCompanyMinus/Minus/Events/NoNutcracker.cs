@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "No nutcrackers", "You are allowed to move", "You wont need to bring your metal codpiece here."};
-            ColorHex = "#008000";
-            Type = EventType.Remove;
+            weight = 1;
+            descriptions = new List<string>() { "No nutcrackers", "You are allowed to move", "You wont need to bring your metal codpiece here."};
+            colorHex = "#008000";
+            type = EventType.Remove;
 
-            EventsToRemove = new List<string>() { nameof(Nutcracker), nameof(NutSlayer), nameof(Hell), nameof(HolidaySeason) };
+            eventsToRemove = new List<string>() { nameof(Nutcracker), nameof(NutSlayer), nameof(Hell), nameof(HolidaySeason) };
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.NutCracker);

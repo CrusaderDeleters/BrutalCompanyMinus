@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 1;
-            Descriptions = new List<string>() { "This facility is armed.", "You better bring your codpiece", "Try moving, i dare you..." };
-            ColorHex = "#800000";
-            Type = EventType.VeryBad;
+            weight = 1;
+            descriptions = new List<string>() { "This facility is armed.", "You better bring your codpiece", "Try moving, i dare you..." };
+            colorHex = "#800000";
+            type = EventType.VeryBad;
 
-            EventsToSpawnWith = new List<string>() { nameof(Turrets) };
+            eventsToSpawnWith = new List<string>() { nameof(Turrets) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.NutCracker,

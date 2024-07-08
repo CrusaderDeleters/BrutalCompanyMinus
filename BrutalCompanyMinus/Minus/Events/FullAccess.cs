@@ -24,12 +24,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 2;
-            Descriptions = new List<string>() { "Everything is open!", "Someone left the door's open", "Every burgler's dream", "Experience true exploration", "You wont need be needing keys here" };
-            ColorHex = "#008000";
-            Type = EventType.Good;
+            weight = 2;
+            descriptions = new List<string>() { "Everything is open!", "Someone left the door's open", "Every burgler's dream", "Experience true exploration", "You wont need be needing keys here" };
+            colorHex = "#008000";
+            type = EventType.Good;
 
-            EventsToRemove = new List<string>() { nameof(FacilityGhost) };
+            eventsToRemove = new List<string>() { nameof(FacilityGhost) };
         }
 
         public override void Execute() => Active = true;

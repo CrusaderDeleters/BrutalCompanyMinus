@@ -18,12 +18,12 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 2;
-            Descriptions = new List<string>() { "Everything is worth slightly more!", "Premium scrap", "Gucci scrap" };
-            ColorHex = "#008000";
-            Type = EventType.Good;
+            weight = 2;
+            descriptions = new List<string>() { "Everything is worth slightly more!", "Premium scrap", "Gucci scrap" };
+            colorHex = "#008000";
+            type = EventType.Good;
 
-            ScaleList.Add(ScaleType.ScrapValue, new Scale(1.1f, 0.007f, 1.1f, 1.8f));
+            scaleList.Add(ScaleType.ScrapValue, new Scale(1.1f, 0.007f, 1.1f, 1.8f));
         }
 
         public override void Execute() => Manager.scrapValueMultiplier *= Getf(ScaleType.ScrapValue);

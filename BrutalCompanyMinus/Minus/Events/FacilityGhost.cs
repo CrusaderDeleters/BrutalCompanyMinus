@@ -20,10 +20,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            Weight = 3;
-            Descriptions = new List<string>() { "There is a ghost in the facility", "Who keeps turning the lights off...", "Paranormal signature detected", "Bring your ouija board" };
-            ColorHex = "#FF0000";
-            Type = EventType.Bad;
+            weight = 3;
+            descriptions = new List<string>() { "There is a ghost in the facility", "Who keeps turning the lights off...", "Paranormal signature detected", "Bring your ouija board" };
+            colorHex = "#FF0000";
+            type = EventType.Bad;
         }
 
         public override void Execute() => Active = true;
