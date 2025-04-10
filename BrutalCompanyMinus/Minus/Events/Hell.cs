@@ -28,7 +28,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 1;
-            Descriptions = new List<string>() { "Great reward, but at what cost...", "This is the worst event of them all", "You are going to need jesus for this one", "Before crushing the life out of you, I will show you why my power is utterly beyond question!" };
+            Descriptions = new List<string>() { "Great reward, but at what cost...?", "This is the worst event of them all.", "You are going to need Jesus for this one.", "Before crushing the life out of you, I will show you why my power is utterly beyond question!" };
             ColorHex = "#280000";
             Type = EventType.VeryBad;
 
