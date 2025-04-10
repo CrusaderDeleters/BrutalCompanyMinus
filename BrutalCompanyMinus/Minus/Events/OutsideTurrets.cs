@@ -20,7 +20,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 3;
-            Descriptions = new List<string>() { "The turrets blend in with the trees...", "I hope you enjoy getting shot", "A beautiful day to go outside." };
+            Descriptions = new List<string>() { "The turrets blend in with the trees...", "I hope you enjoy getting shot!", "A beautiful day to go outside." };
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
