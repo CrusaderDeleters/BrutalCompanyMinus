@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 1;
-            Descriptions = new List<string>() { "Scrap here is plentiful and of high quality.", "This planet is blessed with scrap", "You are going to be rich after this haul" };
+            Descriptions = new List<string>() { "Scrap here is plentiful and of high quality.", "This planet is blessed with scrap!", "You are going to be rich after this haul!" };
             ColorHex = "#00FF00";
             Type = EventType.VeryGood;
 
