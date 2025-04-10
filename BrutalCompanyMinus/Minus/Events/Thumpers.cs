@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 3;
-            Descriptions = new List<string>() { "You need to run", "Drifter's", "Sharks!", "Legless" };
+            Descriptions = new List<string>() { "You need to run.", "Drifters!", "Sharks!", "Skipped leg day, but doubled arm day." };
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
