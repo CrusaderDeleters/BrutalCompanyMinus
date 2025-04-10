@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 3;
-            Descriptions = new List<string>() { "Ceiling campers!", "A delicacy", "The finest of creatures", "Look up", "Look down" };
+            Descriptions = new List<string>() { "Ceiling campers!", "A delicacy", "The finest of creatures.", "Look up!", "Don't look down!" };
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
