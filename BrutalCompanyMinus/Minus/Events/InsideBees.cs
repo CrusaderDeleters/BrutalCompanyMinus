@@ -20,7 +20,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 1;
-            Descriptions = new List<string>() { "BEES!! wait...", "The facility is abuzz!", "Bee careful", "The inside is sweet", "Why was the bee fired from the barbershop? He only knew how to give a buzz cut." };
+            Descriptions = new List<string>() { "BEES!!! ... Wait...", "The facility is abuzz!", "Bee careful", "The inside is sweet!", "Why was the bee fired from the barbershop? He only knew how to give a buzz cut." };
             ColorHex = "#800000";
             Type = EventType.VeryBad;
 
