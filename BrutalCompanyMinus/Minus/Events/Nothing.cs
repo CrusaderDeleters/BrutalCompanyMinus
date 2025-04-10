@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 8;
-            Descriptions = new List<string>() { "--Nothing--", "Literlly nothing", "Wow it's nothing", "---", "The clouds are happy", "In a suprising twist, nothing happens.", "Consider this a good thing" };
+            Descriptions = new List<string>() { "--Nothing--", "Literally nothing", "Wow... it's nothing...", "---", "The clouds are happy.", "In a suprising twist, nothing happens.", "Consider this a good thing!" };
             ColorHex = "#FFFFFF";
             Type = EventType.Neutral;
         }
