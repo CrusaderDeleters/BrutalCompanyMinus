@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 8;
-            Descriptions = new List<string>() { "Locust season is here", "Locusts", "The air fills with the sound of wings." };
+            Descriptions = new List<string>() { "Locust season is here.", "Locusts", "The air fills with the sound of wings." };
             ColorHex = "#FFFFFF";
             Type = EventType.Neutral;
 
