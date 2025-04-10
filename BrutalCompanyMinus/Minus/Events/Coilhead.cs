@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 1;
-            Descriptions = new List<string>() { "Coilheads detected in the facility!", "Containment breach!", "Dont turn your back on them...", "Did you know that a severed head usually keeps it's consciousness for about 4 to 5 seconds." };
+            Descriptions = new List<string>() { "Coilheads detected in the facility!", "Containment breach!", "Dont turn your back on them...", "Did you know that a severed head usually keeps its consciousness for about 4 to 5 seconds?" };
             ColorHex = "#800000";
             Type = EventType.VeryBad;
 
