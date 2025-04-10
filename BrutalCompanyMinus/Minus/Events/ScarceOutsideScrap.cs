@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 1;
-            Descriptions = new List<string>() { "There is a scarce amount of scrap outside.", "Someone dumped these out here...", "Grab it before the baboons do" };
+            Descriptions = new List<string>() { "There is a scarce amount of scrap outside.", "Someone dumped these out here.", "Grab it before the baboons do!" };
             ColorHex = "#008000";
             Type = EventType.Good;
 
