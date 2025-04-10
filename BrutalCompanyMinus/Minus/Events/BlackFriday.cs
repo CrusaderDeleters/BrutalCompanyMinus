@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 1;
-            Descriptions = new List<string>() { "Everything is on sale!!!!", "The marketplace is set ablaze with these discounts", "Dont miss out on these deals!" };
+            Descriptions = new List<string>() { "Everything is on sale!!!!", "The marketplace is set ablaze with these discounts.", "Dont miss out on these deals!" };
             ColorHex = "#00FF00";
             Type = EventType.VeryGood;
 
