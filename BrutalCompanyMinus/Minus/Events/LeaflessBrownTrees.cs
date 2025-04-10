@@ -20,7 +20,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 8;
-            Descriptions = new List<string>() { "These trees look spooky", "Brown leafless trees", "Ok" };
+            Descriptions = new List<string>() { "These trees look spooky.", "Brown leafless trees.", "Ok" };
             ColorHex = "#FFFFFF";
             Type = EventType.Neutral;
 
