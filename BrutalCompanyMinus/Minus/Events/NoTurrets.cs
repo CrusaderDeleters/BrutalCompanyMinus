@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 1;
-            Descriptions = new List<string>() { "No turrets", "No more home security defense system", "This planet is safe from it's tyranny."};
+            Descriptions = new List<string>() { "No turrets", "No more home security defense system.", "This planet is safe from GLaDOS's tyranny."};
             ColorHex = "#008000";
             Type = EventType.Remove;
 
