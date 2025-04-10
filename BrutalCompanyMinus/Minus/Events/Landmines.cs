@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 3;
-            Descriptions = new List<string>() { "Watch your step", "This facility is rigged", "Landmines, yes", "+Landmines" };
+            Descriptions = new List<string>() { "Watch your step.", "This facility is rigged.", "Landmines: Yes", "+Landmines" };
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
