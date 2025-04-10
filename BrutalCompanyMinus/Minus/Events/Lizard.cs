@@ -20,7 +20,7 @@ namespace BrutalCompanyMinus.Minus.Events
 
             Weight = 3;
 
-            Descriptions = new List<string>() { "They dont bite... i swear", "Annoying ones...", "MOVE!!!!!!!!", "These will fart on you, And it isn't pleasent." };
+            Descriptions = new List<string>() { "They dont bite, I swear!", "Annoying ones...", "MOVE!!!!!!!!", "These will fart on you, and it isn't pleasant." };
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
