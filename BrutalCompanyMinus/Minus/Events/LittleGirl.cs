@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 1;
-            Descriptions = new List<string>() { "They just want to touch you", "Do you want your head to explode?", "They just want to play with you", "A kingergarten of dead children" };
+            Descriptions = new List<string>() { "They just want to touch you.", "Do you want your head to explode?", "They just want to play with you.", "A kingergarten of dead children!" };
             ColorHex = "#800000";
             Type = EventType.VeryBad;
 
