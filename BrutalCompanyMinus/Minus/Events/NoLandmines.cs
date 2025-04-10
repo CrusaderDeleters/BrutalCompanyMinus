@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 1;
-            Descriptions = new List<string>() { "No landmines", "No need to be wary of the floor today.", "Dont expect mines" };
+            Descriptions = new List<string>() { "No landmines", "No need to be wary of the floor today.", "Don't expect mines!" };
             ColorHex = "#008000";
             Type = EventType.Remove;
 
