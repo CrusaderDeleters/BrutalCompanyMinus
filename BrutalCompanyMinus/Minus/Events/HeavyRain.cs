@@ -20,7 +20,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 8;
-            Descriptions = new List<string>() { "Id rather stay inside", "Even an umbrella wont stop this", "Monsoon!" };
+            Descriptions = new List<string>() { "I'd rather stay inside...", "Even an umbrella wont stop this.", "Monsoon!" };
             ColorHex = "#FFFFFF";
             Type = EventType.Neutral;
 
