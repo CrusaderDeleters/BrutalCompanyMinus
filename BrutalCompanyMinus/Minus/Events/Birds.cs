@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 8;
-            Descriptions = new List<string>() { "Its bird migration season.", "Birb", "Do these things have feathers?", "You can shoot these." };
+            Descriptions = new List<string>() { "It's bird migration season.", "Birb", "Do these things have feathers?", "You can shoot these." };
             ColorHex = "#FFFFFF";
             Type = EventType.Neutral;
 
