@@ -25,7 +25,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 2;
-            Descriptions = new List<string>() { "Everything is open!", "Someone left the door's open", "Every burgler's dream", "Experience true exploration", "You wont need be needing keys here" };
+            Descriptions = new List<string>() { "Everything is open!", "Someone left the doors open...", "Every burglars' dream", "Experience true exploration!", "You won't need be needing keys here." };
             ColorHex = "#008000";
             Type = EventType.Good;
 
