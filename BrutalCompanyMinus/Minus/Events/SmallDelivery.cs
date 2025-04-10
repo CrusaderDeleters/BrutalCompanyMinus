@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 2;
-            Descriptions = new List<string>() { "The company has decided to give you a present.", "Small shipment for small jobs", "Congratz, you have been awarded." };
+            Descriptions = new List<string>() { "The company has decided to give you a present.", "Small shipment for small jobs.", "Congrats, you have been awarded." };
             ColorHex = "#008000";
             Type = EventType.Good;
 
