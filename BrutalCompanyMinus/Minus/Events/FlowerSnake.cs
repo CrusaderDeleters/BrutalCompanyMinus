@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 3;
-            Descriptions = new List<string>() { "It helps if you weight a little more", "These might take your head off", "Flower snakes!" };
+            Descriptions = new List<string>() { "It helps if you weigh a little more.", "These might take your head off.", "Flower snakes!" };
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
