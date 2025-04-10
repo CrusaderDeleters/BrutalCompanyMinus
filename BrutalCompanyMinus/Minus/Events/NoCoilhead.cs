@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 1;
-            Descriptions = new List<string>() { "Nothing to stare at today", "No decapitation today, i hope", "No more springs." };
+            Descriptions = new List<string>() { "Nothing to stare at today.", "No decapitation today, I hope", "No more springs." };
             ColorHex = "#008000";
             Type = EventType.Remove;
 
