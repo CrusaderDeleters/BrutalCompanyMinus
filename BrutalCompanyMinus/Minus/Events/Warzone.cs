@@ -25,7 +25,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 1;
-            Descriptions = new List<string>() { "Landmines? Turrets? all of it", "DDay is here", "Enjoy getting bombarded" };
+            Descriptions = new List<string>() { "Landmines? Turrets? All of it.", "DDay is here...", "Enjoy getting bombarded!" };
             ColorHex = "#800000";
             Type = EventType.VeryBad;
 
