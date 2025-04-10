@@ -19,7 +19,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 3;
-            Descriptions = new List<string>() { "Turrets!!", "Home defense systems", "Panic and scream", "+Turrets" };
+            Descriptions = new List<string>() { "Turrets!!", "Home defense systems.", "Panic and scream!", "+Turrets" };
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
