@@ -21,7 +21,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 3;
-            Descriptions = new List<string>() { "Some mines have turned into scrap...", "This was a wonderful idea", "Beep, Beep, Beep.", "You can now sell some of the landmines." };
+            Descriptions = new List<string>() { "Some mines have turned into scrap...", "This was a wonderful idea!", "Beep! Beep! Beep!", "You can now sell some of the landmines." };
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
