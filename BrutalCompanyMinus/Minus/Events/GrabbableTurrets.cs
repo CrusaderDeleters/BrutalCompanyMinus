@@ -20,7 +20,7 @@ namespace BrutalCompanyMinus.Minus.Events
             Instance = this;
 
             Weight = 3;
-            Descriptions = new List<string>() { "Some turrets have turned into scrap...", "You can now offically sell some of the turrets, enjoy!", "You can bring these home for an automated defense system for intruders." };
+            Descriptions = new List<string>() { "Some turrets have turned into scrap...", "You can now offically sell some of the turrets, enjoy!", "You can bring these home for an automated defense system against intruders." };
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
