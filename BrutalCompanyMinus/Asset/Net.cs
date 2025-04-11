@@ -11,6 +11,7 @@ using BrutalCompanyMinus.Minus.Handlers;
 using UnityEngine.AI;
 using BrutalCompanyMinus.Minus.MonoBehaviours;
 using UnityEngine.Rendering.HighDefinition;
+using System.Collections;
 
 namespace BrutalCompanyMinus
 {
@@ -86,7 +87,6 @@ namespace BrutalCompanyMinus
             Instance = this;
 
             UI.SpawnObject(); // Spawn client side UI object
-
             if (IsServer) // Only call on server
             { 
                 InitalizeCurrentWeatherMultipliersServerRpc();
@@ -548,9 +548,16 @@ namespace BrutalCompanyMinus
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(Terminal), "Start")]
-        private static void SpawnServerObject()
+        private static void SpawnServerObject(Terminal __instance)
         {
-            if (!FindObjectOfType<NetworkManager>().IsServer) return;
+            __instance.StartCoroutine(delayedSpawn());
+        }
+
+        private static IEnumerator delayedSpawn()
+        {
+            yield return new WaitForSeconds(10f);
+
+            if (!FindObjectOfType<NetworkManager>().IsServer) yield break;
 
             GameObject net = Instantiate(netObject);
             net.GetComponent<NetworkObject>().Spawn(destroyWithScene: false);

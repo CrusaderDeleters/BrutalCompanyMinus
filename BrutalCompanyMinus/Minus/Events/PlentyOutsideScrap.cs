@@ -23,10 +23,10 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#00FF00";
             Type = EventType.VeryGood;
 
-            EventsToRemove = new List<string>() { nameof(ScarceOutsideScrap) };
+            eventsToRemove = new List<string>() { nameof(ScarceOutsideScrap) };
 
-            ScaleList.Add(ScaleType.MinItemAmount, new Scale(9.0f, 0.09f, 9.0f, 18.0f));
-            ScaleList.Add(ScaleType.MaxItemAmount, new Scale(12.0f, 0.12f, 12.0f, 24.0f));
+            scaleList.Add(ScaleType.MinItemAmount, new Scale(9.0f, 0.09f, 9.0f, 18.0f));
+            scaleList.Add(ScaleType.MaxItemAmount, new Scale(12.0f, 0.12f, 12.0f, 24.0f));
         }
 
         public override void Execute() => Manager.Spawn.OutsideScrap(UnityEngine.Random.Range(Get(ScaleType.MinItemAmount), Get(ScaleType.MaxItemAmount) + 1));

@@ -23,8 +23,8 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#280000";
             Type = EventType.VeryBad;
 
-            EventsToSpawnWith = new List<string>() { nameof(Gloomy), nameof(Thumpers), nameof(Spiders), nameof(Masked) };
-            EventsToRemove = new List<string>() { nameof(HeavyRain), nameof(Raining) };
+            eventsToSpawnWith = new List<string>() { nameof(Gloomy), nameof(Thumpers), nameof(Spiders), nameof(Masked) };
+            eventsToRemove = new List<string>() { nameof(HeavyRain), nameof(Raining) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.nutSlayer,
@@ -36,8 +36,8 @@ namespace BrutalCompanyMinus.Minus.Events
                 new Scale(0.0f, 0.0f, 0.0f, 0.0f))
             };
 
-            ScaleList.Add(ScaleType.SpawnMultiplier, new Scale(1.25f, 0.0075f, 1.25f, 2.0f));
-            ScaleList.Add(ScaleType.SpawnCapMultiplier, new Scale(1.4f, 0.016f, 1.4f, 3.0f));
+            scaleList.Add(ScaleType.SpawnMultiplier, new Scale(1.25f, 0.0075f, 1.25f, 2.0f));
+            scaleList.Add(ScaleType.SpawnCapMultiplier, new Scale(1.4f, 0.016f, 1.4f, 3.0f));
         }
 
         public override void Execute() 

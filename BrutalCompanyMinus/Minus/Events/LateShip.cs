@@ -25,8 +25,8 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
-            ScaleList.Add(ScaleType.MinAmount, new Scale(50.0f, 1.0f, 50.0f, 150.0f));
-            ScaleList.Add(ScaleType.MaxAmount, new Scale(60.0f, 1.2f, 60.0f, 180.0f));
+            scaleList.Add(ScaleType.MinAmount, new Scale(50.0f, 1.0f, 50.0f, 150.0f));
+            scaleList.Add(ScaleType.MaxAmount, new Scale(60.0f, 1.2f, 60.0f, 180.0f));
         }
 
         public override void Execute() => Net.Instance.MoveTimeServerRpc(UnityEngine.Random.Range(Getf(ScaleType.MinAmount), Getf(ScaleType.MaxAmount)));

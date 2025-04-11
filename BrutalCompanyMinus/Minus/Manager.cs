@@ -451,10 +451,10 @@ namespace BrutalCompanyMinus.Minus
                         ScrapWeights.Add(r.currentLevel.spawnableScrap[i].rarity);
                     }
                 }
-                int[] weights = ScrapWeights.ToArray();
+                int[] Weights = ScrapWeights.ToArray();
                 for (int i = 0; i < Amount; i++)
                 {
-                    Item pickedScrap = r.currentLevel.spawnableScrap[r.GetRandomWeightedIndex(weights, rng)].spawnableItem;
+                    Item pickedScrap = r.currentLevel.spawnableScrap[r.GetRandomWeightedIndex(Weights, rng)].spawnableItem;
                     ScrapToSpawn.Add(Assets.GetItem(pickedScrap.name));
                 }
 

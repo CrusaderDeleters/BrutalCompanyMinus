@@ -23,7 +23,7 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
-            EventsToSpawnWith = new List<string>() { nameof(ScarceOutsideScrap) };
+            eventsToSpawnWith = new List<string>() { nameof(ScarceOutsideScrap) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.HoardingBug,

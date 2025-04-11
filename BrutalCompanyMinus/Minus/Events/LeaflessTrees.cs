@@ -24,15 +24,15 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#FFFFFF";
             Type = EventType.Neutral;
 
-            EventsToRemove = new List<string>() { nameof(Trees), nameof(LeaflessBrownTrees) };
+            eventsToRemove = new List<string>() { nameof(Trees), nameof(LeaflessBrownTrees) };
 
-            ScaleList.Add(ScaleType.MinDensity, new Scale(0.018f, 0.0f, 0.018f, 0.018f));
-            ScaleList.Add(ScaleType.MaxDensity, new Scale(0.025f, 0.0f, 0.025f, 0.025f));
+            scaleList.Add(ScaleType.MinDensity, new Scale(0.018f, 0.0f, 0.018f, 0.018f));
+            scaleList.Add(ScaleType.MaxDensity, new Scale(0.025f, 0.0f, 0.025f, 0.025f));
         }
 
         public override void Execute()
         {
-            if (LeaflessBrownTrees.Instance.Executed || Trees.Instance.Executed) return;
+            if (LeaflessBrownTrees.Instance.executed || Trees.Instance.executed) return;
 
             Net.Instance.outsideObjectsToSpawn.Add(new OutsideObjectsToSpawn(UnityEngine.Random.Range(Getf(ScaleType.MinDensity) * 0.5f, Getf(ScaleType.MaxDensity) * 0.5f), (int)Assets.ObjectName.TreeLeafless2));
             Net.Instance.outsideObjectsToSpawn.Add(new OutsideObjectsToSpawn(UnityEngine.Random.Range(Getf(ScaleType.MinDensity) * 0.5f, Getf(ScaleType.MaxDensity) * 0.5f), (int)Assets.ObjectName.TreeLeafless3));

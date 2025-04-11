@@ -24,7 +24,7 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#FFFFFF";
             Type = EventType.Neutral;
 
-            EventsToRemove = new List<string>() { nameof(Raining), nameof(Gloomy) };
+            eventsToRemove = new List<string>() { nameof(Raining), nameof(Gloomy) };
         }
 
         public override void Execute() {

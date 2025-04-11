@@ -23,7 +23,7 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#800000";
             Type = EventType.VeryBad;
 
-            EventsToSpawnWith = new List<string>() { nameof(Turrets) };
+            eventsToSpawnWith = new List<string>() { nameof(Turrets) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.NutCracker,

@@ -29,7 +29,7 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#008000";
             Type = EventType.Good;
 
-            EventsToRemove = new List<string>() { nameof(FacilityGhost) };
+            eventsToRemove = new List<string>() { nameof(FacilityGhost) };
         }
 
         public override void Execute() => Active = true;

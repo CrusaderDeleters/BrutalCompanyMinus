@@ -24,7 +24,7 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#800000";
             Type = EventType.VeryBad;
 
-            EventsToRemove = new List<string>() { nameof(Bees) };
+            eventsToRemove = new List<string>() { nameof(Bees) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.CircuitBee,
@@ -36,7 +36,7 @@ namespace BrutalCompanyMinus.Minus.Events
                 new Scale(5.0f, 0.1f, 5.0f, 15.0f))
             };
 
-            ScaleList.Add(ScaleType.DaytimeEnemyRarity, new Scale(20.0f, 0.8f, 20.0f, 100.0f));
+            scaleList.Add(ScaleType.DaytimeEnemyRarity, new Scale(20.0f, 0.8f, 20.0f, 100.0f));
         }
 
         public override void Execute()

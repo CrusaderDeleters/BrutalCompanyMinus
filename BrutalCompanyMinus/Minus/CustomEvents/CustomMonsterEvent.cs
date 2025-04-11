@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using LethalConfig.ConfigItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,43 +12,80 @@ namespace BrutalCompanyMinus.Minus.CustomEvents
 {
     internal class CustomMonsterEvent : MEvent
     {
-        public static int CustomMonsterEventCount = 0;
+        public ConfigEntry<string> name;
 
-        private string name = "0";
-        public ConfigEntry<string> enemyName;
+        private int previousMonsterEventCount = 0;
+        private int highestMonsterCount = 0;
+        public ConfigEntry<int> monsterEventAmount;
 
-        public override string Name() => name;
+        public override string Name() => name.Value;
 
         public override void Initalize()
         {
-            name = string.Format("CustomMonsterEvent{0}", CustomMonsterEventCount);
-            CustomMonsterEventCount++;
+            monsterEventAmount = Configuration.customEventConfig.Bind("Custom Events", "Monster Event count", 3, "How many monster events to generate in the config?");
+            previousMonsterEventCount = monsterEventAmount.Value;
+            highestMonsterCount = monsterEventAmount.Value;
+            monsterEventAmount.SettingChanged += (o, e) =>
+            {
+                monsterEventAmount.Value = Mathf.Clamp(monsterEventAmount.Value, 0, 50);
 
-            enemyName = Configuration.customEventConfig.Bind(Name(), "Enemy Name", "", "To find out what string to use type menemies into the terminal.");
+                if(monsterEventAmount.Value > previousMonsterEventCount)
+                {
+                    if(monsterEventAmount.Value <= highestMonsterCount)
+                    {
 
-            Enabled = false;
+                    } else
+                    {
+                        List<MonsterEvent> newMonsterEventList = new List<MonsterEvent>();
+                        foreach (MonsterEvent monsterEvent in monsterEvents)
+                        {
+                            newMonsterEventList.Add(monsterEvent);
+                        }
+
+                        for (int i = 0; i < monsterEventAmount.Value - previousMonsterEventCount; i++)
+                        {
+                            MonsterEvent newMonsterEvent = new MonsterEvent(Assets.GetEnemy(Assets.EnemyName.HoardingBug), new Scale(), new Scale(), new Scale(), new Scale(), new Scale(), new Scale());
+                            newMonsterEvent.InitalizeConfigWithEnemyName(Name(), Configuration.customEventConfig, Configuration.monsterEventsModInfo);
+                            newMonsterEventList.Add(newMonsterEvent);
+                        }
+
+                        monsterEvents.Clear();
+                        foreach (MonsterEvent monsterEvent in newMonsterEventList)
+                        {
+                            monsterEvents.Add(monsterEvent);
+                        }
+                    }
+                } else if(monsterEventAmount.Value < previousMonsterEventCount)
+                {
+                    monsterEvents.RemoveRange(monsterEventAmount.Value - 1, previousMonsterEventCount - monsterEventAmount.Value);
+                }
+
+                if(monsterEventAmount.Value > highestMonsterCount)
+                {
+                    highestMonsterCount = monsterEventAmount.Value;
+                }
+                previousMonsterEventCount = monsterEventAmount.Value;
+            };
+            Configuration.AddConfigForLethalConfig(new IntInputFieldConfigItem(monsterEventAmount, false), Configuration.monsterEventsModInfo);
+
+            enabled = false;
             Weight = 0;
             Descriptions = new List<string>() { "Descriptions..." };
             ColorHex = "#FF0000";
             Type = EventType.Neutral;
 
-            ScaleList.Add(ScaleType.InsideEnemyRarity, new Scale(30.0f, 0.5f, 30.0f, 80.0f));
-            ScaleList.Add(ScaleType.OutsideEnemyRarity, new Scale(30.0f, 0.5f, 30.0f, 80.0f));
-            ScaleList.Add(ScaleType.MinInsideEnemy, new Scale(1.0f, 0.05f, 1.0f, 5.0f));
-            ScaleList.Add(ScaleType.MaxInsideEnemy, new Scale(2.0f, 0.1f, 2.0f, 5.0f));
-            ScaleList.Add(ScaleType.MinOutsideEnemy, new Scale(1.0f, 0.04f, 1.0f, 2.0f));
-            ScaleList.Add(ScaleType.MaxOutsideEnemy, new Scale(2.0f, 0.08f, 2.0f, 5.0f));
         }
 
-        public override void Execute()
+        public override void Execute() => ExecuteAllMonsterEvents();
+
+        public override void InitalizeConfigEntries(ConfigFile to, Configuration.ModInfo info)
         {
-            EnemyType enemy = Assets.GetEnemy(enemyName.Value);
+            InitalizeBasicEntries(to, info);
 
-            Manager.AddEnemyToPoolWithRarity(ref RoundManager.Instance.currentLevel.Enemies, enemy, Get(ScaleType.InsideEnemyRarity));
-            Manager.AddEnemyToPoolWithRarity(ref RoundManager.Instance.currentLevel.OutsideEnemies, enemy, Get(ScaleType.OutsideEnemyRarity));
-
-            Manager.Spawn.OutsideEnemies(enemy, UnityEngine.Random.Range(Get(ScaleType.MinOutsideEnemy), Get(ScaleType.MaxOutsideEnemy) + 1));
-            Manager.Spawn.InsideEnemies(enemy, UnityEngine.Random.Range(Get(ScaleType.MinInsideEnemy), Get(ScaleType.MaxInsideEnemy) + 1));
+            foreach(MonsterEvent e in monsterEvents)
+            {
+                e.InitalizeConfigWithEnemyName(Name(), to, info);
+            }
         }
     }
 }

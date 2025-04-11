@@ -20,7 +20,7 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            EventsToRemove = new List<string>() { nameof(NoOldBird), nameof(NoDogs), nameof(NoGiants), nameof(NoBaboons), nameof(NoWorm), nameof(NoMasks), nameof(NoBirds), nameof(Warzone), nameof(OutsideTurrets), nameof(OutsideLandmines), nameof(Masked), nameof(AllWeather) };
+            eventsToRemove = new List<string>() { nameof(NoOldBird), nameof(NoDogs), nameof(NoGiants), nameof(NoBaboons), nameof(NoWorm), nameof(NoMasks), nameof(NoBirds), nameof(Warzone), nameof(OutsideTurrets), nameof(OutsideLandmines), nameof(Masked), nameof(AllWeather) };
 
             Weight = 1;
             Descriptions = new List<string>() { "The outdoors is safe!", "It's unusally quiet outside.", "You might find bees outside, but that's about it.", "You can hear your own footsteps echo as you walk outside." };

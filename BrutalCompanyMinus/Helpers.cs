@@ -211,7 +211,7 @@ namespace BrutalCompanyMinus
             return mostCommon;
         }
 
-        internal static Scale getScale(string from)
+        internal static Scale GetScale(string from)
         {
             float[] values = ParseValuesFromString(from);
             return new Scale(values[0], values[1], values[2], values[3]);
@@ -224,7 +224,7 @@ namespace BrutalCompanyMinus
             return from.Split(',').Select(x => float.Parse(x, en)).ToArray();
         }
 
-        internal static string StringsToList(List<string> strings, string seperator) // This is confusing naming
+        internal static string ListToString(List<string> strings, string seperator)
         {
             string text = "";
             foreach (string s in strings)
@@ -236,17 +236,42 @@ namespace BrutalCompanyMinus
             return text;
         }
 
-        internal static List<string> ListToStrings(string text)
+        internal static List<string> ListToStrings(string text) // This naming makes no sense to me
         {
             if (text.IsNullOrWhiteSpace()) return new List<string>();
             text = text.Replace(" ", "");
             return text.Split(',').ToList();
         }
 
-        internal static List<string> ListToDescriptions(string text)
+        internal static List<string> StringToList(string text)
         {
             if (text.IsNullOrWhiteSpace()) return new List<string>() { "" };
             return text.Split("|").ToList();
+        }
+
+        internal static string SpawnableItemToString(SpawnableItemWithRarity item)
+        {
+            return item.spawnableItem.name + ":" + item.rarity.ToString();
+        }
+
+        internal static SpawnableItemWithRarity StringToSpawnableItem(string item)
+        {
+            if (item.IsNullOrWhiteSpace()) return new SpawnableItemWithRarity() { spawnableItem = Assets.GetItem(Assets.ItemName.AirHorn), rarity = 100 };
+            string[] splitted = item.Split(":");
+            if(splitted.Length == 2)
+            {
+                int Weight = 0;
+                try
+                {
+                    Weight = int.Parse(splitted[1]);
+                } catch
+                {
+
+                }
+                return new SpawnableItemWithRarity() { spawnableItem = Assets.GetItem(splitted[0]), rarity = Weight };
+            }
+
+            return new SpawnableItemWithRarity() { spawnableItem = Assets.GetItem(Assets.ItemName.AirHorn), rarity = 100 };
         }
 
         internal static DifficultyTransition[] GetDifficultyTransitionsFromString(string s)

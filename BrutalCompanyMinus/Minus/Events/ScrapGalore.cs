@@ -23,10 +23,10 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#00FF00";
             Type = EventType.VeryGood;
 
-            ScaleList.Add(ScaleType.ScrapValue, new Scale(1.35f, 0.0115f, 1.35f, 2.5f));
-            ScaleList.Add(ScaleType.ScrapAmount, new Scale(1.35f, 0.0115f, 1.35f, 2.5f));
+            scaleList.Add(ScaleType.ScrapValue, new Scale(1.35f, 0.0115f, 1.35f, 2.5f));
+            scaleList.Add(ScaleType.ScrapAmount, new Scale(1.35f, 0.0115f, 1.35f, 2.5f));
 
-            EventsToRemove = new List<string>() { nameof(HigherScrapValue), nameof(MoreScrap) };
+            eventsToRemove = new List<string>() { nameof(HigherScrapValue), nameof(MoreScrap) };
         }
 
         public override void Execute()

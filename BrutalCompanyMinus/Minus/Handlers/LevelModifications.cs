@@ -74,7 +74,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
             foreach (Keyframe key in Assets.daytimeSpawnChanceCurves[levelIndex].keys) __instance.currentLevel.daytimeEnemySpawnChanceThroughDay.AddKey(key);
 
             Events.GrabbableLandmines.LandmineDisabled = false;
-            foreach (MEvent e in EventManager.events) e.Executed = false;
+            foreach (MEvent e in EventManager.events) e.executed = false;
 
             RoundManager.Instance.currentLevel.maxEnemyPowerCount = Assets.insideMaxPowerCounts[levelIndex];
             RoundManager.Instance.currentLevel.maxOutsideEnemyPowerCount = Assets.outsideMaxPowerCounts[levelIndex];
@@ -198,12 +198,12 @@ namespace BrutalCompanyMinus.Minus.Handlers
                 newScrapValues.Add(scrapValues[i]);
             }
 
-            List<int> weights = new List<int>();
-            foreach(SpawnableItemWithRarity item in Manager.ScrapToTransmuteTo) weights.Add(item.rarity);
+            List<int> Weights = new List<int>();
+            foreach(SpawnableItemWithRarity item in Manager.ScrapToTransmuteTo) Weights.Add(item.rarity);
 
             for(int i = 0; i < scrapToRemove; i++)
             {
-                SpawnableItemWithRarity chosenItem = Manager.ScrapToTransmuteTo[RoundManager.Instance.GetRandomWeightedIndexList(weights)];
+                SpawnableItemWithRarity chosenItem = Manager.ScrapToTransmuteTo[RoundManager.Instance.GetRandomWeightedIndexList(Weights)];
 
                 GameObject obj = GameObject.Instantiate(chosenItem.spawnableItem.spawnPrefab, Vector3.zero, Quaternion.identity);
 

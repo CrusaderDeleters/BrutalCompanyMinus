@@ -23,8 +23,8 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#800000";
             Type = EventType.VeryBad;
 
-            EventsToRemove = new List<string>() { nameof(HoardingBugs), nameof(KamikazieBugs) };
-            EventsToSpawnWith = new List<string> { nameof(ScarceOutsideScrap) };
+            eventsToRemove = new List<string>() { nameof(HoardingBugs), nameof(KamikazieBugs) };
+            eventsToSpawnWith = new List<string> { nameof(ScarceOutsideScrap) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.HoardingBug,

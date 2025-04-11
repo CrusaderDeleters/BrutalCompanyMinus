@@ -23,8 +23,8 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#800000";
             Type = EventType.VeryBad;
 
-            EventsToRemove = new List<string>() { nameof(Trees), nameof(LeaflessBrownTrees), nameof(Spiders) };
-            EventsToSpawnWith = new List<string>() { nameof(LeaflessTrees) };
+            eventsToRemove = new List<string>() { nameof(Trees), nameof(LeaflessBrownTrees), nameof(Spiders) };
+            eventsToSpawnWith = new List<string>() { nameof(LeaflessTrees) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.BunkerSpider,

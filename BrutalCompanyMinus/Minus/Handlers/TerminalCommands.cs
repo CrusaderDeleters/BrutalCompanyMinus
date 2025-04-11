@@ -85,7 +85,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
                             text += $"Failed to find {arg} in events.\n";
                         }
                     }
-                    text += $"\nCurrent forced events = [{Helper.StringsToList(EventManager.forcedEvents.Select(n => n.Name()).ToList(), ",")}]";
+                    text += $"\nCurrent forced events = [{Helper.ListToString(EventManager.forcedEvents.Select(n => n.Name()).ToList(), ",")}]";
 
                     Respond(text);
                 })
@@ -98,7 +98,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
                 execute = new Action<string[]>((arguments) =>
                 {
                     EventManager.forcedEvents.Clear();
-                    Respond($"Cleared forced event list\n\nCurrent forced events = [{Helper.StringsToList(EventManager.forcedEvents.Select(n => n.Name()).ToList(), ",")}]");
+                    Respond($"Cleared forced event list\n\nCurrent forced events = [{Helper.ListToString(EventManager.forcedEvents.Select(n => n.Name()).ToList(), ",")}]");
                 })
             },           
             new MCommand()
@@ -112,17 +112,17 @@ namespace BrutalCompanyMinus.Minus.Handlers
                     {
                         string text = "To display extra information about a particular event, use\nMEVENTS [Name]\n\n";
                         text += "[Very Good] events:\n";
-                        text += Helper.StringsToList(EventManager.allVeryGood.Select(n => n.Name()).ToList(), ", ");
+                        text += Helper.ListToString(EventManager.allVeryGood.Select(n => n.Name()).ToList(), ", ");
                         text += "\n\n[Good] events:\n";
-                        text += Helper.StringsToList(EventManager.allGood.Select(n => n.Name()).ToList(), ", ");
+                        text += Helper.ListToString(EventManager.allGood.Select(n => n.Name()).ToList(), ", ");
                         text += "\n\n[Neutral] events:\n";
-                        text += Helper.StringsToList(EventManager.allNeutral.Select(n => n.Name()).ToList(), ", ");
+                        text += Helper.ListToString(EventManager.allNeutral.Select(n => n.Name()).ToList(), ", ");
                         text += "\n\n[Bad] events:\n";
-                        text += Helper.StringsToList(EventManager.allBad.Select(n => n.Name()).ToList(), ", ");
+                        text += Helper.ListToString(EventManager.allBad.Select(n => n.Name()).ToList(), ", ");
                         text += "\n\n[VeryBad] events:\n";
-                        text += Helper.StringsToList(EventManager.allVeryBad.Select(n => n.Name()).ToList(), ", ");
+                        text += Helper.ListToString(EventManager.allVeryBad.Select(n => n.Name()).ToList(), ", ");
                         text += "\n\n[Remove] events:\n";
-                        text += Helper.StringsToList(EventManager.allRemove.Select(n => n.Name()).ToList(), ", ");
+                        text += Helper.ListToString(EventManager.allRemove.Select(n => n.Name()).ToList(), ", ");
 
                         Respond(text);
                     } else
@@ -136,16 +136,16 @@ namespace BrutalCompanyMinus.Minus.Handlers
 
                                 string text = $"[{mEvent.Name()}]:\n\n";
                                 text += $"[ColorHex]: {mEvent.ColorHex}\n[Weight]: {mEvent.Weight}\n[Type]: {mEvent.Type}\n\n";
-                                text += $"[Descriptions]: {Helper.StringsToList(mEvent.Descriptions, "|")}\n\n";
-                                text += $"[EventsToRemove]: {Helper.StringsToList(mEvent.EventsToRemove, ", ")}\n\n";
-                                text += $"[EventsToSpawnWith]: {Helper.StringsToList(mEvent.EventsToSpawnWith, ", ")}\n\n";
+                                text += $"[Descriptions]: {Helper.ListToString(mEvent.Descriptions, "|")}\n\n";
+                                text += $"[EventsToRemove]: {Helper.ListToString(mEvent.eventsToRemove, ", ")}\n\n";
+                                text += $"[EventsToSpawnWith]: {Helper.ListToString(mEvent.eventsToSpawnWith, ", ")}\n\n";
                                 text += $"[ScaleList]: \n";
-                                foreach(KeyValuePair<MEvent.ScaleType, MEvent.Scale> scaleType in mEvent.ScaleList)
+                                foreach(KeyValuePair<MEvent.ScaleType, Scale> scaleType in mEvent.scaleList)
                                 {
                                     text += $"{ScaleTypePadded(scaleType.Key)} {Helper.GetStringFromScale(scaleType.Value)}\n";
                                 }
                                 text += "\n[MonsterEvents]:\n";
-                                foreach(MEvent.MonsterEvent monsterEvent in mEvent.monsterEvents)
+                                foreach(MonsterEvent monsterEvent in mEvent.monsterEvents)
                                 {
                                     text += $"\n{monsterEvent.enemy.name}\n";
                                     text += $"{ScaleTypePadded(MEvent.ScaleType.InsideEnemyRarity)}{Helper.GetStringFromScale(monsterEvent.insideSpawnRarity)}\n";
@@ -331,7 +331,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
                                     text += $"\n   Prefab Name: {obj.prefabToSpawn.name}\n      Spawn Facing Away from Wall: {obj.spawnFacingAwayFromWall}\n      Object Width: {obj.objectWidth}";
                                     if(obj.spawnableFloorTags != null)
                                     {
-                                        text += $"\n      Spawnable Floor Tags: {Helper.StringsToList(obj.spawnableFloorTags.ToList(), ",")}";
+                                        text += $"\n      Spawnable Floor Tags: {Helper.ListToString(obj.spawnableFloorTags.ToList(), ",")}";
                                     }
                                     if(spawnableOutsideObject.randomAmount != null)
                                     {
@@ -423,7 +423,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
             }
         };
 
-        public static string ScaleTypePadded(MEvent.ScaleType type) => $"[{type}]:".PadRight(23);
+        public static string ScaleTypePadded(MEvent.ScaleType Type) => $"[{Type}]:".PadRight(23);
 
         public static void Respond(string text, bool clearPreviousText = true)
         {

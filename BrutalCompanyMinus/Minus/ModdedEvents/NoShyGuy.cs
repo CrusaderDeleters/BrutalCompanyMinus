@@ -18,7 +18,7 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            EventsToRemove = new List<string>() { nameof(Hell), nameof(ShyGuy) };
+            eventsToRemove = new List<string>() { nameof(Hell), nameof(ShyGuy) };
 
             Weight = 1;
             Descriptions = new List<string>() { "SCP-096 is contained.", "You can open your eyes" };

@@ -23,8 +23,8 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
-            ScaleList.Add(ScaleType.MinAmount, new Scale(5.0f, 0.2f, 5.0f, 25.0f));
-            ScaleList.Add(ScaleType.MaxAmount, new Scale(7.0f, 0.28f, 7.0f, 35.0f));
+            scaleList.Add(ScaleType.MinAmount, new Scale(5.0f, 0.2f, 5.0f, 25.0f));
+            scaleList.Add(ScaleType.MaxAmount, new Scale(7.0f, 0.28f, 7.0f, 35.0f));
         }
 
         public override bool AddEventIfOnly() => RoundManager.Instance.currentLevel.spawnableMapObjects.ToList().Exists(x => x.prefabToSpawn.name == "TeleporterTrap");

@@ -23,10 +23,10 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#008000";
             Type = EventType.Good;
 
-            ScaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
-            ScaleList.Add(ScaleType.Percentage, new Scale(0.5f, 0.008f, 0.5f, 0.9f));
+            scaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
+            scaleList.Add(ScaleType.Percentage, new Scale(0.5f, 0.008f, 0.5f, 0.9f));
 
-            EventsToRemove = new List<string>() { nameof(RealityShift) };
+            eventsToRemove = new List<string>() { nameof(RealityShift) };
         }
 
         public override bool AddEventIfOnly() // If one-handed item exists in item pool

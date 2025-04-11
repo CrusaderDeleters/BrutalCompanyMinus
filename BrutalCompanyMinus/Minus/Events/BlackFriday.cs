@@ -23,10 +23,10 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#00FF00";
             Type = EventType.VeryGood;
 
-            EventsToRemove = new List<string>() { nameof(ShipmentFees) };
+            eventsToRemove = new List<string>() { nameof(ShipmentFees) };
 
-            ScaleList.Add(ScaleType.MinPercentageCut, new Scale(25.0f, 0.7f, 25.0f, 95.0f));
-            ScaleList.Add(ScaleType.MaxPercentageCut, new Scale(55.0f, 0.7f, 55.0f, 95.0f));
+            scaleList.Add(ScaleType.MinPercentageCut, new Scale(25.0f, 0.7f, 25.0f, 95.0f));
+            scaleList.Add(ScaleType.MaxPercentageCut, new Scale(55.0f, 0.7f, 55.0f, 95.0f));
         }
 
         public override void Execute() => Net.Instance.BlackFridayServerRpc(Get(ScaleType.MinPercentageCut), Get(ScaleType.MaxPercentageCut));

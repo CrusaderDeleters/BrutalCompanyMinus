@@ -1,4 +1,5 @@
-﻿using Discord;
+﻿using BepInEx.Configuration;
+using Discord;
 using HarmonyLib;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,18 +11,18 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
     [HarmonyPatch]
     internal class DDay : NetworkBehaviour
     {
-        public static float currentTime = 0;
-        public static float bombardmentCurrentTime = 0;
-        public static float fireCurrentTime = 0;
+        public static float currentTime;
+        public static float bombardmentCurrentTime;
+        public static float fireCurrentTime;
 
-        public static float bombardmentInterval = 100;
-        public static float bombardmentTime = 15;
+        public static ConfigEntry<float> bombardmentInterval;
+        public static ConfigEntry<float> bombardmentTime;
 
-        public static float fireInterval = 1;
-        public static int fireAmount = 8;
+        public static ConfigEntry<float> fireInterval;
+        public static ConfigEntry<int> fireAmount;
 
-        public static bool displayedBombardmentWarning = false;
-        public static bool displayWarning = true;
+        public static bool displayedBombardmentWarning;
+        public static ConfigEntry<bool> displayWarning;
 
         private static float fireAmountMultiplier = 1.0f;
 
@@ -35,7 +36,7 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
 
         public Transform transform;
 
-        public static float volume = 0.3f;
+        public static ConfigEntry<float> volume;
 
         private List<Vector3> spawnDenialNodes = new List<Vector3>();
 
@@ -49,8 +50,8 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
 
             currentTime = 15.0f;
 
-            sirensClose.volume = volume;
-            sirensFar.volume = volume;
+            sirensClose.volume = volume.Value;
+            sirensFar.volume = volume.Value;
 
             triggerLayerMask = LayerMask.GetMask("Triggers");
         }
@@ -66,8 +67,8 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
             {
                 float fireAmountMultiplier = Mathf.Clamp(Manager.terrainArea / 9700.0f, 1.0f, 3.0f);
 
-                currentTime = bombardmentInterval;
-                bombardmentCurrentTime = bombardmentTime;
+                currentTime = bombardmentInterval.Value;
+                bombardmentCurrentTime = bombardmentTime.Value;
 
                 displayedBombardmentWarning = false;
             }
@@ -75,7 +76,7 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
             if (currentTime <= 15 && !displayedBombardmentWarning)
             {
                 instance.PlayServerRpc();
-                if (displayWarning) Net.Instance.DisplayTipServerRpc("BOMBARDMENT IN 15 SECONDS", "TAKE COVER!!!", true);
+                if (displayWarning.Value) Net.Instance.DisplayTipServerRpc("BOMBARDMENT IN 15 SECONDS", "TAKE COVER!!!", true);
                 displayedBombardmentWarning = true;
             }
 
@@ -87,13 +88,13 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
 
             if (fireCurrentTime < 0)
             {
-                fireCurrentTime = fireInterval;
+                fireCurrentTime = fireInterval.Value;
 
                 seed++;
                 System.Random rng = new System.Random(seed);
 
                 // Fire
-                for (int i = 0; i < fireAmount * fireAmountMultiplier; i++)
+                for (int i = 0; i < fireAmount.Value * fireAmountMultiplier; i++)
                 {
                     for (int j = 0; j < 4; j++) // 4 Attempts at safe position
                     {

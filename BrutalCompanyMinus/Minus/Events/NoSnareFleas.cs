@@ -23,7 +23,7 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#008000";
             Type = EventType.Remove;
 
-            EventsToRemove = new List<string>() { nameof(SnareFleas), nameof(Worms) };
+            eventsToRemove = new List<string>() { nameof(SnareFleas), nameof(Worms) };
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.SnareFlea);

@@ -18,7 +18,7 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            EventsToRemove = new List<string>() { nameof(Hell), nameof(Masked), nameof(NutSlayer) };
+            eventsToRemove = new List<string>() { nameof(Hell), nameof(Masked), nameof(NutSlayer) };
 
             Weight = 1;
             Descriptions = new List<string>() { "No friends :(", "No more hugs.", "No more trust issues!" };

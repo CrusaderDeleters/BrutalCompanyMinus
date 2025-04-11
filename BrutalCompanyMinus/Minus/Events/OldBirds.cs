@@ -23,7 +23,7 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#800000";
             Type = EventType.VeryBad;
 
-            EventsToSpawnWith = new List<string>() { nameof(Landmines), nameof(OutsideLandmines) };
+            eventsToSpawnWith = new List<string>() { nameof(Landmines), nameof(OutsideLandmines) };
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.OldBird,

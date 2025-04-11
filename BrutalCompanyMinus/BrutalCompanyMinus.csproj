@@ -40,6 +40,9 @@
     <Reference Include="com.github.zehsteam.ToilHead">
       <HintPath>..\..\..\..\Downloads\Zehs-ToilHead-1.3.2\com.github.zehsteam.ToilHead.dll</HintPath>
     </Reference>
+    <Reference Include="LethalConfig">
+      <HintPath>..\..\..\..\Desktop\AinaVT-LethalConfig-1.4.2\plugins\LethalConfig\LethalConfig.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Animation.Rigging">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Unity.Animation.Rigging.dll</HintPath>
     </Reference>

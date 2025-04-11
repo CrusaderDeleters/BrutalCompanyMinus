@@ -33,7 +33,7 @@ namespace BrutalCompanyMinus.Minus.Events
                 new Scale(3.0f, 0.06f, 3.0f, 9.0f))
             };
 
-            ScaleList.Add(ScaleType.DaytimeEnemyRarity, new Scale(20.0f, 0.8f, 20.0f, 100.0f));
+            scaleList.Add(ScaleType.DaytimeEnemyRarity, new Scale(20.0f, 0.8f, 20.0f, 100.0f));
         }
 
         public override void Execute()

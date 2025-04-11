@@ -26,10 +26,10 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#800000";
             Type = EventType.VeryBad;
 
-            EventsToRemove = new List<string>() { nameof(Gloomy), nameof(Raining), nameof(HeavyRain) };
+            eventsToRemove = new List<string>() { nameof(Gloomy), nameof(Raining), nameof(HeavyRain) };
 
-            ScaleList.Add(ScaleType.ScrapValue, new Scale(1.60f, 0.0f, 1.60f, 1.60f));
-            ScaleList.Add(ScaleType.ScrapAmount, new Scale(1.30f, 0.0f, 1.30f, 1.30f));
+            scaleList.Add(ScaleType.ScrapValue, new Scale(1.60f, 0.0f, 1.60f, 1.60f));
+            scaleList.Add(ScaleType.ScrapAmount, new Scale(1.30f, 0.0f, 1.30f, 1.30f));
         }
 
         public override bool AddEventIfOnly() => RoundManager.Instance.currentLevel.randomWeathers != null && RoundManager.Instance.currentLevel.randomWeathers.Length >= 3;

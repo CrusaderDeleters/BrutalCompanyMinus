@@ -23,7 +23,7 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#008000";
             Type = EventType.Remove;
 
-            EventsToRemove = new List<string>() { nameof(ForestGiant), nameof(Hell), nameof(SirenHead), nameof(RollingGiants) };
+            eventsToRemove = new List<string>() { nameof(ForestGiant), nameof(Hell), nameof(SirenHead), nameof(RollingGiants) };
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.ForestKeeper) || Manager.SpawnExists("PinkGiantObj") || Manager.SpawnExists("RollingGiant_EnemyType") || Manager.SpawnExists("RollingGiant_EnemyType_Outside") || Manager.SpawnExists("RollingGiant_EnemyType_Outside_Daytime") || Manager.SpawnExists("SirenHead");

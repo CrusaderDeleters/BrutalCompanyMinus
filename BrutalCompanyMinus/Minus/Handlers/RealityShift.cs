@@ -1,4 +1,5 @@
-﻿using BepInEx.Logging;
+﻿using BepInEx.Configuration;
+using BepInEx.Logging;
 using BrutalCompanyMinus.Minus.MonoBehaviours;
 using GameNetcodeStuff;
 using HarmonyLib;
@@ -20,13 +21,12 @@ namespace BrutalCompanyMinus.Minus.Handlers
     [HarmonyPatch]
     internal class RealityShift
     {
-
         public static List<GameObject> shiftList = new List<GameObject>();
         public static List<int> shiftListValues = new List<int>();
 
-        public static int normalScrapWeight = 85, grabbableLandmineWeight = 15;
+        public static ConfigEntry<int> normalScrapWeight, grabbableLandmineWeight;
 
-        public static float transmuteChance = 0.5f, enemyTeleportChance = 0.1f;
+        public static ConfigEntry<float> transmuteChance, enemyTeleportChance;
 
         public static List<int> ShiftableObjects = new List<int>();
 
@@ -61,7 +61,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
             {
                 foreach(int objectID in ShiftableObjects)
                 {
-                    if(objectID == grabbableObject.gameObject.GetInstanceID() && UnityEngine.Random.Range(0.0f, 1.0f) <= transmuteChance)
+                    if(objectID == grabbableObject.gameObject.GetInstanceID() && UnityEngine.Random.Range(0.0f, 1.0f) <= transmuteChance.Value)
                     {
                         invalidateGrab = true;
                         Net.Instance.ShiftServerRpc(grabbableObject.NetworkObject);
@@ -81,7 +81,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
             if (!Events.RealityShift.Active || !NetworkManager.Singleton.IsServer || __instance == null || __instance.transform == null) return;
             System.Random rng = new System.Random(Net.Instance._seed++);
 
-            if(rng.NextDouble() <= enemyTeleportChance)
+            if(rng.NextDouble() <= enemyTeleportChance.Value)
             {
                 Vector3 newPosition = Helper.GetRandomNavMeshPositionInBox(__instance.transform.position, 15.0f, 25.0f);
 
@@ -118,7 +118,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
                 instance.cursorIcon.enabled = false;
                 instance.cursorTip.text = "";
                 instance.twoHanded = newObject.itemProperties.twoHanded;
-                instance.carryWeight += Mathf.Clamp(newObject.itemProperties.weight - 1f, 0f, 10f);
+                instance.carryWeight += Mathf.Clamp(newObject.itemProperties.Weight - 1f, 0f, 10f);
                 if (newObject.itemProperties.grabAnimationTime > 0f)
                 {
                     instance.grabObjectAnimationTime = newObject.itemProperties.grabAnimationTime;
@@ -157,16 +157,16 @@ namespace BrutalCompanyMinus.Minus.Handlers
 
             Net.Instance.GenerateShiftableObjectsListServerRpc(spawnedScrap);
 
-            List<int> weights = new List<int>();
+            List<int> Weights = new List<int>();
             foreach (SpawnableItemWithRarity item in RoundManager.Instance.currentLevel.spawnableScrap)
             {
                 if (item != null)
                 {
-                    weights.Add(item.rarity);
+                    Weights.Add(item.rarity);
                 }
                 else
                 {
-                    weights.Add(0);
+                    Weights.Add(0);
                 }
             }
 
@@ -175,8 +175,8 @@ namespace BrutalCompanyMinus.Minus.Handlers
                 int seed = StartOfRound.Instance.randomMapSeed + i;
                 System.Random rng = new System.Random(seed);
                 UnityEngine.Random.InitState(seed);
-                Item spawnableItem = RoundManager.Instance.currentLevel.spawnableScrap[RoundManager.Instance.GetRandomWeightedIndexList(weights, rng)].spawnableItem;
-                int index = RoundManager.Instance.GetRandomWeightedIndex(new int[2] { normalScrapWeight, grabbableLandmineWeight }, rng);
+                Item spawnableItem = RoundManager.Instance.currentLevel.spawnableScrap[RoundManager.Instance.GetRandomWeightedIndexList(Weights, rng)].spawnableItem;
+                int index = RoundManager.Instance.GetRandomWeightedIndex(new int[2] { normalScrapWeight.Value, grabbableLandmineWeight.Value }, rng);
                 if (spawnableItem.spawnPrefab == null || spawnableItem.spawnPrefab.GetComponent<GrabbableObject>() == null) index = 1;
                 if (index == 1) // Grabbable Landmine
                 {

@@ -23,14 +23,14 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#008000";
             Type = EventType.Good;
 
-            EventsToRemove = new List<string>() { nameof(RealityShift) };
+            eventsToRemove = new List<string>() { nameof(RealityShift) };
 
             scrapTransmutationEvent = new ScrapTransmutationEvent(
                 new Scale(0.5f, 0.008f, 0.5f, 0.9f),
                 new SpawnableItemWithRarity() { spawnableItem = Assets.GetItem(Assets.ItemName.Teeth), rarity = 100 }
             );
 
-            ScaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
+            scaleList.Add(ScaleType.ScrapAmount, new Scale(1.0f, 0.005f, 1.0f, 1.5f));
         }
 
         public override bool AddEventIfOnly()

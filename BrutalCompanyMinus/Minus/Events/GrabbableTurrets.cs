@@ -24,9 +24,9 @@ namespace BrutalCompanyMinus.Minus.Events
             ColorHex = "#FF0000";
             Type = EventType.Bad;
 
-            ScaleList.Add(ScaleType.Rarity, new Scale(0.33f, 0.0066f, 0.33f, 1.0f));
-            ScaleList.Add(ScaleType.MinAmount, new Scale(2.0f, 0.06f, 2.0f, 8.0f));
-            ScaleList.Add(ScaleType.MaxAmount, new Scale(3.0f, 0.09f, 3.0f, 12.0f));
+            scaleList.Add(ScaleType.Rarity, new Scale(0.33f, 0.0066f, 0.33f, 1.0f));
+            scaleList.Add(ScaleType.MinAmount, new Scale(2.0f, 0.06f, 2.0f, 8.0f));
+            scaleList.Add(ScaleType.MaxAmount, new Scale(3.0f, 0.09f, 3.0f, 12.0f));
         }
 
         public override bool AddEventIfOnly() => RoundManager.Instance.currentLevel.spawnableMapObjects.ToList().Exists(x => x.prefabToSpawn.name == Assets.ObjectNameList[Assets.ObjectName.Turret]);
