@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 1;
-            descriptions = new List<string>() { "Scrap here is plentiful and of high quality.", "This planet is blessed with scrap", "You are going to be rich after this haul" };
-            colorHex = "#00FF00";
-            type = EventType.VeryGood;
+            Weight = 1;
+            Descriptions = new List<string>() { "Scrap here is plentiful and of high quality.", "This planet is blessed with scrap", "You are going to be rich after this haul" };
+            ColorHex = "#00FF00";
+            Type = EventType.VeryGood;
 
             scaleList.Add(ScaleType.ScrapValue, new Scale(1.35f, 0.0115f, 1.35f, 2.5f));
             scaleList.Add(ScaleType.ScrapAmount, new Scale(1.35f, 0.0115f, 1.35f, 2.5f));

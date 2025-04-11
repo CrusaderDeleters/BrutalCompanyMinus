@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 1;
-            descriptions = new List<string>() { "Corporate is very pleased", "The company has sent you a stimulus check", "Yippeeee" };
-            colorHex = "#00FF00";
-            type = EventType.VeryGood;
+            Weight = 1;
+            Descriptions = new List<string>() { "Corporate is very pleased", "The company has sent you a stimulus check", "Yippeeee" };
+            ColorHex = "#00FF00";
+            Type = EventType.VeryGood;
 
             eventsToRemove = new List<string>() { nameof(Bonus) };
 

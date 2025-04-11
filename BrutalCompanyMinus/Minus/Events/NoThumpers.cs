@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 1;
-            descriptions = new List<string>() { "No crawlers", "No drifing", "No more running", "No more sharks", "No legless" };
-            colorHex = "#008000";
-            type = EventType.Remove;
+            Weight = 1;
+            Descriptions = new List<string>() { "No crawlers", "No drifing", "No more running", "No more sharks", "No legless" };
+            ColorHex = "#008000";
+            Type = EventType.Remove;
 
             eventsToRemove = new List<string>() { nameof(Thumpers), nameof(Hell), nameof(NutSlayer) };
         }

@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 2;
-            descriptions = new List<string>() { "Bad Dice!!!!", "You wont make it big today", "Horrible luck is bestowed upon you!" };
-            colorHex = "#800000";
-            type = EventType.VeryBad;
+            Weight = 2;
+            Descriptions = new List<string>() { "Bad Dice!!!!", "You wont make it big today", "Horrible luck is bestowed upon you!" };
+            ColorHex = "#800000";
+            Type = EventType.VeryBad;
 
             scrapTransmutationEvent = new ScrapTransmutationEvent(
                 new Scale(0.5f, 0.008f, 0.5f, 0.9f),

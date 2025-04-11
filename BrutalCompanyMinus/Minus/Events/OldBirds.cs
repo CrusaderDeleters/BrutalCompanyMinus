@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 1;
-            descriptions = new List<string>() { "Who put that thing in there??", "Mentally deranged toddlers", "Does the lighnting kill them?" };
-            colorHex = "#800000";
-            type = EventType.VeryBad;
+            Weight = 1;
+            Descriptions = new List<string>() { "Who put that thing in there??", "Mentally deranged toddlers", "Does the lighnting kill them?" };
+            ColorHex = "#800000";
+            Type = EventType.VeryBad;
 
             eventsToSpawnWith = new List<string>() { nameof(Landmines), nameof(OutsideLandmines) };
 

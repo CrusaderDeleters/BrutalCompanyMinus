@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 3;
-            descriptions = new List<string>() { "Lockers", "They remind me of iron maidens", "The chance of you dying has increased" };
-            colorHex = "#FF0000";
-            type = EventType.Bad;
+            Weight = 3;
+            Descriptions = new List<string>() { "Lockers", "They remind me of iron maidens", "The chance of you dying has increased" };
+            ColorHex = "#FF0000";
+            Type = EventType.Bad;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 "LockerEnemy",

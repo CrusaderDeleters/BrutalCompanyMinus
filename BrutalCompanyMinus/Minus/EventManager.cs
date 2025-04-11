@@ -162,15 +162,15 @@ namespace BrutalCompanyMinus.Minus
             if (_events.Count == 0) return new Events.Nothing();
 
             int WeightedSum = 0;
-            foreach (MEvent e in _events) WeightedSum += e.weight;
+            foreach (MEvent e in _events) WeightedSum += e.Weight;
 
             foreach (MEvent e in _events)
             {
-                if (rng.Next(0, WeightedSum) < e.weight)
+                if (rng.Next(0, WeightedSum) < e.Weight)
                 {
                     return e;
                 }
-                WeightedSum -= e.weight;
+                WeightedSum -= e.Weight;
             }
 
             return _events[_events.Count - 1];
@@ -188,7 +188,7 @@ namespace BrutalCompanyMinus.Minus
 
             // Decide how many events to spawn
             System.Random rng = new System.Random(StartOfRound.Instance.randomMapSeed + 32345 + Environment.TickCount);
-            int eventsToSpawn = (int)Scale.Compute(Configuration.eventsToSpawn, MEvent.EventType.Neutral) + RoundManager.Instance.GetRandomWeightedIndex(Configuration.weightsForExtraEvents.IntArray(), rng);
+            int eventsToSpawn = (int)Scale.Compute(Configuration.eventsToSpawn, MEvent.EventType.Neutral) + RoundManager.Instance.GetRandomWeightedIndex(Configuration.WeightsForExtraEvents.IntArray(), rng);
             
             foreach(MEvent forcedEvent in forcedEvents)
             {
@@ -344,10 +344,10 @@ namespace BrutalCompanyMinus.Minus
             for (int i = 0; i < eventTypeAmount; i++)
             {
                 newEventWeights[i] = (int)((eventTypeSum / fix(eventTypeCount[i])) * eventTypeProbabilities[i] * 1000.0f);
-                Log.LogInfo($"Set eventType weight for {((MEvent.EventType)Enum.ToObject(typeof(MEvent.EventType), i)).ToString()} to {newEventWeights[i]}");
+                Log.LogInfo($"Set eventType Weight for {((MEvent.EventType)Enum.ToObject(typeof(MEvent.EventType), i)).ToString()} to {newEventWeights[i]}");
             }
 
-            foreach(MEvent e in events) e.weight = newEventWeights[(int)e.type];
+            foreach(MEvent e in events) e.Weight = newEventWeights[(int)e.Type];
         }
 
         internal static void UpdateEventTypeCounts()
@@ -356,7 +356,7 @@ namespace BrutalCompanyMinus.Minus
 
             eventTypeCount = new float[eventTypeAmount];
             for (int i = 0; i < eventTypeAmount; i++) eventTypeCount[i] = 0.0f;
-            foreach (MEvent e in events) eventTypeCount[(int)e.type]++;
+            foreach (MEvent e in events) eventTypeCount[(int)e.Type]++;
 
             eventTypeSum = 0.0f;
             for (int i = 0; i < eventTypeAmount; i++) eventTypeSum += eventTypeCount[i];
@@ -368,7 +368,7 @@ namespace BrutalCompanyMinus.Minus
             currentEventDescriptions.Clear();
             foreach(MEvent e in events)
             {
-                currentEventDescriptions.Add($"<color={e.colorHex}>{e.descriptions[UnityEngine.Random.Range(0, e.descriptions.Count)]}</color>");
+                currentEventDescriptions.Add($"<color={e.ColorHex}>{e.Descriptions[UnityEngine.Random.Range(0, e.Descriptions.Count)]}</color>");
             }
         }
 

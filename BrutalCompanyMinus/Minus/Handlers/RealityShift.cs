@@ -118,7 +118,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
                 instance.cursorIcon.enabled = false;
                 instance.cursorTip.text = "";
                 instance.twoHanded = newObject.itemProperties.twoHanded;
-                instance.carryWeight += Mathf.Clamp(newObject.itemProperties.weight - 1f, 0f, 10f);
+                instance.carryWeight += Mathf.Clamp(newObject.itemProperties.Weight - 1f, 0f, 10f);
                 if (newObject.itemProperties.grabAnimationTime > 0f)
                 {
                     instance.grabObjectAnimationTime = newObject.itemProperties.grabAnimationTime;
@@ -157,16 +157,16 @@ namespace BrutalCompanyMinus.Minus.Handlers
 
             Net.Instance.GenerateShiftableObjectsListServerRpc(spawnedScrap);
 
-            List<int> weights = new List<int>();
+            List<int> Weights = new List<int>();
             foreach (SpawnableItemWithRarity item in RoundManager.Instance.currentLevel.spawnableScrap)
             {
                 if (item != null)
                 {
-                    weights.Add(item.rarity);
+                    Weights.Add(item.rarity);
                 }
                 else
                 {
-                    weights.Add(0);
+                    Weights.Add(0);
                 }
             }
 
@@ -175,7 +175,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
                 int seed = StartOfRound.Instance.randomMapSeed + i;
                 System.Random rng = new System.Random(seed);
                 UnityEngine.Random.InitState(seed);
-                Item spawnableItem = RoundManager.Instance.currentLevel.spawnableScrap[RoundManager.Instance.GetRandomWeightedIndexList(weights, rng)].spawnableItem;
+                Item spawnableItem = RoundManager.Instance.currentLevel.spawnableScrap[RoundManager.Instance.GetRandomWeightedIndexList(Weights, rng)].spawnableItem;
                 int index = RoundManager.Instance.GetRandomWeightedIndex(new int[2] { normalScrapWeight.Value, grabbableLandmineWeight.Value }, rng);
                 if (spawnableItem.spawnPrefab == null || spawnableItem.spawnPrefab.GetComponent<GrabbableObject>() == null) index = 1;
                 if (index == 1) // Grabbable Landmine

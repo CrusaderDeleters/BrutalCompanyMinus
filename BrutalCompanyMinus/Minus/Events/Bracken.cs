@@ -19,10 +19,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 1;
-            descriptions = new List<string>() { "Your neck tingles", "Your local chiropractors", "I hope you have nyctophobia", "You wont win this staring competition" };
-            colorHex = "#800000";
-            type = EventType.VeryBad;
+            Weight = 1;
+            Descriptions = new List<string>() { "Your neck tingles", "Your local chiropractors", "I hope you have nyctophobia", "You wont win this staring competition" };
+            ColorHex = "#800000";
+            Type = EventType.VeryBad;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.Bracken,

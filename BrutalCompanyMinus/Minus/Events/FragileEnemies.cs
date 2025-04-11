@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 3;
-            descriptions = new List<string>() { "Enemies here are a little more fragile than usual.", "Should take 1 less bonk", "A mysterious ailment is making the enemies fragile..." };
-            colorHex = "#008000";
-            type = EventType.Good;
+            Weight = 3;
+            Descriptions = new List<string>() { "Enemies here are a little more fragile than usual.", "Should take 1 less bonk", "A mysterious ailment is making the enemies fragile..." };
+            ColorHex = "#008000";
+            Type = EventType.Good;
 
             eventsToRemove = new List<string>() { nameof(StrongEnemies) };
 

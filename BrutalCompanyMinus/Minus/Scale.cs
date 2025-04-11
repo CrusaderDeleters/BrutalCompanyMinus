@@ -27,8 +27,8 @@ namespace BrutalCompanyMinus.Minus
             return Mathf.Clamp(scale.Base + (increment * Manager.difficulty), scale.MinCap, Configuration.ignoreMaxCap.Value ? 99999999999.0f : scale.MaxCap);
         }
 
-        public float Computef(MEvent.EventType type) => Compute(this, type);
+        public float Computef(MEvent.EventType Type) => Compute(this, Type);
 
-        public int Compute(MEvent.EventType type) => (int)Compute(this, type);
+        public int Compute(MEvent.EventType Type) => (int)Compute(this, Type);
     }
 }

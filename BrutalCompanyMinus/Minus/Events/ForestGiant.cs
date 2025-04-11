@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 1;
-            descriptions = new List<string>() { "Eddie hall in the facility?", "Why not", "You hearing stomping inside the facility." };
-            colorHex = "#800000";
-            type = EventType.VeryBad;
+            Weight = 1;
+            Descriptions = new List<string>() { "Eddie hall in the facility?", "Why not", "You hearing stomping inside the facility." };
+            ColorHex = "#800000";
+            Type = EventType.VeryBad;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.ForestKeeper,

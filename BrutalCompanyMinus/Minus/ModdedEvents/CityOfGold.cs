@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 2;
-            descriptions = new List<string>() { "Everything is golden!!", "Gold rush!", "The nigerian princes stash!" };
-            colorHex = "#00FF00";
-            type = EventType.VeryGood;
+            Weight = 2;
+            Descriptions = new List<string>() { "Everything is golden!!", "Gold rush!", "The nigerian princes stash!" };
+            ColorHex = "#00FF00";
+            Type = EventType.VeryGood;
 
             eventsToRemove = new List<string>() { nameof(GoldenBars) };
 

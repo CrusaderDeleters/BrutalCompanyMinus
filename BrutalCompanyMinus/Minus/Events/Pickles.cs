@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 2;
-            descriptions = new List<string>() { "Tastes salty...", "Reminds me of grandma", "This cellar is massive" };
-            colorHex = "#008000";
-            type = EventType.Good;
+            Weight = 2;
+            Descriptions = new List<string>() { "Tastes salty...", "Reminds me of grandma", "This cellar is massive" };
+            ColorHex = "#008000";
+            Type = EventType.Good;
 
             eventsToRemove = new List<string>() { nameof(RealityShift) };
 

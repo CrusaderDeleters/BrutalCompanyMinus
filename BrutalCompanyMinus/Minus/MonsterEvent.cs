@@ -91,7 +91,7 @@ namespace BrutalCompanyMinus.Minus
 
         internal void InitalizeConfigWithEnemyName(string eventName, ConfigFile to, ModInfo info)
         {
-            enemyConfigEntry = to.Bind(eventName, "Enemy Name", enemy.name, "To get enemy names type 'menemies' into the terminal.");
+            enemyConfigEntry = to.Bind(eventName, "Enemy Name", enemy.name, "To get enemy names Type 'menemies' into the terminal.");
             enemyConfigEntry.Value = Assets.GetEnemy(enemyConfigEntry.Value).name;
             enemyConfigEntry.SettingChanged += (o, e) => enemyConfigEntry.Value = Assets.GetEnemy(enemyConfigEntry.Value).name; // If cant find enemy then GetEnemy() will return a hoardingbug.
             AddConfigForLethalConfig(new TextInputFieldConfigItem(enemyConfigEntry, false), info);

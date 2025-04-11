@@ -20,10 +20,10 @@ namespace BrutalCompanyMinus.Minus.Events
 
             eventsToRemove = new List<string>() { nameof(Hell), nameof(Masked), nameof(NutSlayer) };
 
-            weight = 1;
-            descriptions = new List<string>() { "No friends :(", "No more hugs", "No more trust issues" };
-            colorHex = "#008000";
-            type = EventType.Remove;
+            Weight = 1;
+            Descriptions = new List<string>() { "No friends :(", "No more hugs", "No more trust issues" };
+            ColorHex = "#008000";
+            Type = EventType.Remove;
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.Masked);

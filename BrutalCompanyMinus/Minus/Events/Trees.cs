@@ -19,10 +19,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 8;
-            descriptions = new List<string>() { "Trees", "More trees", "The trees look like trees" };
-            colorHex = "#FFFFFF";
-            type = EventType.Neutral;
+            Weight = 8;
+            Descriptions = new List<string>() { "Trees", "More trees", "The trees look like trees" };
+            ColorHex = "#FFFFFF";
+            Type = EventType.Neutral;
 
             eventsToRemove = new List<string>() { nameof(LeaflessBrownTrees), nameof(LeaflessTrees) };
 

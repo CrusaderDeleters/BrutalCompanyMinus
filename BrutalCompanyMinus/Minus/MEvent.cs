@@ -17,29 +17,29 @@ namespace BrutalCompanyMinus.Minus
     public class MEvent
     {
 
-        internal ConfigEntry<string> descriptionsConfigEntry;
+        internal ConfigEntry<string> DescriptionsConfigEntry;
         /// <summary>
         /// This is the text displayed in the UI.
         /// </summary>
-        public List<string> descriptions = new List<string>() { "" };
+        public List<string> Descriptions = new List<string>() { "" };
 
-        internal ConfigEntry<string> colorHexConfigEntry;
+        internal ConfigEntry<string> ColorHexConfigEntry;
         /// <summary>
         /// The color the event will be displayed in the UI in hex.
         /// </summary>
-        public string colorHex = "#FFFFFF";
+        public string ColorHex = "#FFFFFF";
 
-        internal ConfigEntry<int> weightConfigEntry;
+        internal ConfigEntry<int> WeightConfigEntry;
         /// <summary>
         /// This can be ignored, this value is only used when Use_Custom_Weights in the config is set to true.
         /// </summary>
-        public int weight = 1;
+        public int Weight = 1;
 
-        internal ConfigEntry<EventType> typeConfigEntry;
+        internal ConfigEntry<EventType> TypeConfigEntry;
         /// <summary>
         /// Set in what your opinion the severity of this event.
         /// </summary>
-        public EventType type = EventType.Neutral;
+        public EventType Type = EventType.Neutral;
 
         internal ConfigEntry<bool> enabledConfigEntry;
         /// <summary>
@@ -78,7 +78,7 @@ namespace BrutalCompanyMinus.Minus
         internal bool executed = false;
 
         /// <summary>
-        /// This is the event type.
+        /// This is the event Type.
         /// </summary>
         public enum EventType
         {
@@ -148,7 +148,7 @@ namespace BrutalCompanyMinus.Minus
         {
             try
             {
-                return Scale.Compute(scaleList[scaleType], type);
+                return Scale.Compute(scaleList[scaleType], Type);
             } catch
             {
                 Log.LogError(string.Format("Scalar '{0}' for '{1}' not found, returning 0.", scaleType.ToString(), Name()));
@@ -193,25 +193,25 @@ namespace BrutalCompanyMinus.Minus
 
         internal void InitalizeBasicEntries(ConfigFile to, ModInfo info)
         {
-            descriptionsConfigEntry = to.Bind(Name(), "Descriptions", ListToString(descriptions, "|"), "Seperated by |");
-            descriptions = StringToList(descriptionsConfigEntry.Value);
-            descriptionsConfigEntry.SettingChanged += (o, e) => descriptions = StringToList(descriptionsConfigEntry.Value);
-            AddConfigForLethalConfig(new TextInputFieldConfigItem(descriptionsConfigEntry, false), info);
+            DescriptionsConfigEntry = to.Bind(Name(), "Descriptions", ListToString(Descriptions, "|"), "Seperated by |");
+            Descriptions = StringToList(DescriptionsConfigEntry.Value);
+            DescriptionsConfigEntry.SettingChanged += (o, e) => Descriptions = StringToList(DescriptionsConfigEntry.Value);
+            AddConfigForLethalConfig(new TextInputFieldConfigItem(DescriptionsConfigEntry, false), info);
 
-            colorHexConfigEntry = to.Bind(Name(), "Color Hex", colorHex);
-            colorHex = colorHexConfigEntry.Value;
-            colorHexConfigEntry.SettingChanged += (o, e) => colorHex = colorHexConfigEntry.Value;
-            AddConfigForLethalConfig(new TextInputFieldConfigItem(colorHexConfigEntry, false), info);
+            ColorHexConfigEntry = to.Bind(Name(), "Color Hex", ColorHex);
+            ColorHex = ColorHexConfigEntry.Value;
+            ColorHexConfigEntry.SettingChanged += (o, e) => ColorHex = ColorHexConfigEntry.Value;
+            AddConfigForLethalConfig(new TextInputFieldConfigItem(ColorHexConfigEntry, false), info);
 
-            weightConfigEntry = to.Bind(Name(), "Custom Weight", weight, "If you want to use custom weights change 'Use custom weights'? setting in '__Event Settings' to true.");
-            weight = weightConfigEntry.Value;
-            weightConfigEntry.SettingChanged += (o, e) => weight = weightConfigEntry.Value;
-            AddConfigForLethalConfig(new IntInputFieldConfigItem(weightConfigEntry, false), info);
+            WeightConfigEntry = to.Bind(Name(), "Custom Weight", Weight, "If you want to use custom Weights change 'Use custom Weights'? setting in '__Event Settings' to true.");
+            Weight = WeightConfigEntry.Value;
+            WeightConfigEntry.SettingChanged += (o, e) => Weight = WeightConfigEntry.Value;
+            AddConfigForLethalConfig(new IntInputFieldConfigItem(WeightConfigEntry, false), info);
 
-            typeConfigEntry = to.Bind(Name(), "Event Type", type);
-            type = typeConfigEntry.Value;
-            typeConfigEntry.SettingChanged += (o, e) => type = typeConfigEntry.Value;
-            AddConfigForLethalConfig(new EnumDropDownConfigItem<EventType>(typeConfigEntry, false), info);
+            TypeConfigEntry = to.Bind(Name(), "Event Type", Type);
+            Type = TypeConfigEntry.Value;
+            TypeConfigEntry.SettingChanged += (o, e) => Type = TypeConfigEntry.Value;
+            AddConfigForLethalConfig(new EnumDropDownConfigItem<EventType>(TypeConfigEntry, false), info);
 
             enabledConfigEntry = to.Bind(Name(), "Event Enabled?", enabled, "Setting this to false will stop the event from occuring.");
             enabled = enabledConfigEntry.Value;

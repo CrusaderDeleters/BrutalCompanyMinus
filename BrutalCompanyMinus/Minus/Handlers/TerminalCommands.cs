@@ -135,8 +135,8 @@ namespace BrutalCompanyMinus.Minus.Handlers
                                 found = true;
 
                                 string text = $"[{mEvent.Name()}]:\n\n";
-                                text += $"[ColorHex]: {mEvent.colorHex}\n[Weight]: {mEvent.weight}\n[Type]: {mEvent.type}\n\n";
-                                text += $"[Descriptions]: {Helper.ListToString(mEvent.descriptions, "|")}\n\n";
+                                text += $"[ColorHex]: {mEvent.ColorHex}\n[Weight]: {mEvent.Weight}\n[Type]: {mEvent.Type}\n\n";
+                                text += $"[Descriptions]: {Helper.ListToString(mEvent.Descriptions, "|")}\n\n";
                                 text += $"[EventsToRemove]: {Helper.ListToString(mEvent.eventsToRemove, ", ")}\n\n";
                                 text += $"[EventsToSpawnWith]: {Helper.ListToString(mEvent.eventsToSpawnWith, ", ")}\n\n";
                                 text += $"[ScaleList]: \n";
@@ -423,7 +423,7 @@ namespace BrutalCompanyMinus.Minus.Handlers
             }
         };
 
-        public static string ScaleTypePadded(MEvent.ScaleType type) => $"[{type}]:".PadRight(23);
+        public static string ScaleTypePadded(MEvent.ScaleType Type) => $"[{Type}]:".PadRight(23);
 
         public static void Respond(string text, bool clearPreviousText = true)
         {

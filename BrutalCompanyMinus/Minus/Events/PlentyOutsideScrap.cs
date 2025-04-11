@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 1;
-            descriptions = new List<string>() { "There is some scrap to be found outside.", "This facility lacks proper waste disposal", "Yay, scrap outside" };
-            colorHex = "#00FF00";
-            type = EventType.VeryGood;
+            Weight = 1;
+            Descriptions = new List<string>() { "There is some scrap to be found outside.", "This facility lacks proper waste disposal", "Yay, scrap outside" };
+            ColorHex = "#00FF00";
+            Type = EventType.VeryGood;
 
             eventsToRemove = new List<string>() { nameof(ScarceOutsideScrap) };
 

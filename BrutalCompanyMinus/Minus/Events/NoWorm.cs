@@ -20,10 +20,10 @@ namespace BrutalCompanyMinus.Minus.Events
 
             eventsToRemove = new List<string>() { nameof(Hell), nameof(Worms) };
 
-            weight = 1;
-            descriptions = new List<string>() { "No worms", "No leviathans", "The earth is safe", "No delicacy" };
-            colorHex = "#008000";
-            type = EventType.Remove;
+            Weight = 1;
+            Descriptions = new List<string>() { "No worms", "No leviathans", "The earth is safe", "No delicacy" };
+            ColorHex = "#008000";
+            Type = EventType.Remove;
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists(Assets.EnemyName.EarthLeviathan);

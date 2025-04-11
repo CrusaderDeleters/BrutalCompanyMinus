@@ -198,12 +198,12 @@ namespace BrutalCompanyMinus.Minus.Handlers
                 newScrapValues.Add(scrapValues[i]);
             }
 
-            List<int> weights = new List<int>();
-            foreach(SpawnableItemWithRarity item in Manager.ScrapToTransmuteTo) weights.Add(item.rarity);
+            List<int> Weights = new List<int>();
+            foreach(SpawnableItemWithRarity item in Manager.ScrapToTransmuteTo) Weights.Add(item.rarity);
 
             for(int i = 0; i < scrapToRemove; i++)
             {
-                SpawnableItemWithRarity chosenItem = Manager.ScrapToTransmuteTo[RoundManager.Instance.GetRandomWeightedIndexList(weights)];
+                SpawnableItemWithRarity chosenItem = Manager.ScrapToTransmuteTo[RoundManager.Instance.GetRandomWeightedIndexList(Weights)];
 
                 GameObject obj = GameObject.Instantiate(chosenItem.spawnableItem.spawnPrefab, Vector3.zero, Quaternion.identity);
 

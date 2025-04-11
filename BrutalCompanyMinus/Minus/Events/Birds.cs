@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 8;
-            descriptions = new List<string>() { "Its bird migration season", "Birb", "Do these things have feathers?", "You can shoot these" };
-            colorHex = "#FFFFFF";
-            type = EventType.Neutral;
+            Weight = 8;
+            Descriptions = new List<string>() { "Its bird migration season", "Birb", "Do these things have feathers?", "You can shoot these" };
+            ColorHex = "#FFFFFF";
+            Type = EventType.Neutral;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.Manticoil,

@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 3;
-            descriptions = new List<string>() { "You need to run", "Drifter's", "Sharks!", "Legless" };
-            colorHex = "#FF0000";
-            type = EventType.Bad;
+            Weight = 3;
+            Descriptions = new List<string>() { "You need to run", "Drifter's", "Sharks!", "Legless" };
+            ColorHex = "#FF0000";
+            Type = EventType.Bad;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.Thumper,

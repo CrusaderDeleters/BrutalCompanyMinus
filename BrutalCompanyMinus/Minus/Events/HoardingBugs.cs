@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 3;
-            descriptions = new List<string>() { "They look cute.", "Best served bonked", "Pretty innocent" };
-            colorHex = "#FF0000";
-            type = EventType.Bad;
+            Weight = 3;
+            Descriptions = new List<string>() { "They look cute.", "Best served bonked", "Pretty innocent" };
+            ColorHex = "#FF0000";
+            Type = EventType.Bad;
 
             eventsToSpawnWith = new List<string>() { nameof(ScarceOutsideScrap) };
 

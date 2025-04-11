@@ -22,10 +22,10 @@ namespace BrutalCompanyMinus.Minus.Events
 
             eventsToRemove = new List<string>() { nameof(Hell), nameof(Peepers) };
 
-            weight = 1;
-            descriptions = new List<string>() { "No weights", "The air feels light." };
-            colorHex = "#008000";
-            type = EventType.Remove;
+            Weight = 1;
+            Descriptions = new List<string>() { "No Weights", "The air feels light." };
+            ColorHex = "#008000";
+            Type = EventType.Remove;
         }
 
         public override bool AddEventIfOnly() => Compatibility.peepersPresent;

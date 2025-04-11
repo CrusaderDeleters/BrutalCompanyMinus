@@ -19,10 +19,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 8;
-            descriptions = new List<string>() { "Id rather stay inside", "Even an umbrella wont stop this", "Monsoon!" };
-            colorHex = "#FFFFFF";
-            type = EventType.Neutral;
+            Weight = 8;
+            Descriptions = new List<string>() { "Id rather stay inside", "Even an umbrella wont stop this", "Monsoon!" };
+            ColorHex = "#FFFFFF";
+            Type = EventType.Neutral;
 
             eventsToRemove = new List<string>() { nameof(Raining), nameof(Gloomy) };
         }

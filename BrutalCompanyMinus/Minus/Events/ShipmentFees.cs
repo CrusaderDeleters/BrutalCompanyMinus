@@ -19,10 +19,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 3;
-            descriptions = new List<string>() { "The company is now incurring a fee for shipments!", "You are going to be taxed for any shipments...", "I don't recommend buying anything today.", "You might go into debt, beware" };
-            colorHex = "#FF0000";
-            type = EventType.Bad;
+            Weight = 3;
+            Descriptions = new List<string>() { "The company is now incurring a fee for shipments!", "You are going to be taxed for any shipments...", "I don't recommend buying anything today.", "You might go into debt, beware" };
+            ColorHex = "#FF0000";
+            Type = EventType.Bad;
 
             scaleList.Add(ScaleType.MinCut, new Scale(0.2f, 0.004f, 0.2f, 0.6f));
             scaleList.Add(ScaleType.MaxCut, new Scale(0.3f, 0.006f, 0.3f, 0.9f));

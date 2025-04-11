@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 1;
-            descriptions = new List<string>() { "The company has ordered a big delivery on this planet.", "A Luxurious cargo descends.", "Corporate has sent you a massive package." };
-            colorHex = "#00FF00";
-            type = EventType.VeryGood;
+            Weight = 1;
+            Descriptions = new List<string>() { "The company has ordered a big delivery on this planet.", "A Luxurious cargo descends.", "Corporate has sent you a massive package." };
+            ColorHex = "#00FF00";
+            Type = EventType.VeryGood;
 
             eventsToRemove = new List<string>() { nameof(SmallDelivery) };
 

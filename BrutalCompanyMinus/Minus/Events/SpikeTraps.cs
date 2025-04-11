@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 3;
-            descriptions = new List<string>() { "Spikes!!!", "I recommend looking up", "Hydraulic press!" };
-            colorHex = "#FF0000";
-            type = EventType.Bad;
+            Weight = 3;
+            Descriptions = new List<string>() { "Spikes!!!", "I recommend looking up", "Hydraulic press!" };
+            ColorHex = "#FF0000";
+            Type = EventType.Bad;
 
             scaleList.Add(ScaleType.MinAmount, new Scale(3.0f, 0.09f, 3.0f, 12.0f));
             scaleList.Add(ScaleType.MaxAmount, new Scale(4.0f, 0.12f, 4.0f, 16.0f));

@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 1;
-            descriptions = new List<string>() { "No landmines", "No need to be wary of the floor today.", "Dont expect mines" };
-            colorHex = "#008000";
-            type = EventType.Remove;
+            Weight = 1;
+            Descriptions = new List<string>() { "No landmines", "No need to be wary of the floor today.", "Dont expect mines" };
+            ColorHex = "#008000";
+            Type = EventType.Remove;
 
             eventsToRemove = new List<string>() { nameof(Landmines), nameof(OutsideLandmines), nameof(Warzone), nameof(GrabbableLandmines), nameof(Hell), nameof(Roomba) };
         }

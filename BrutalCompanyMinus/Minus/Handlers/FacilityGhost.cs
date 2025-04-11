@@ -56,16 +56,16 @@ namespace BrutalCompanyMinus.Minus.Handlers
                     actionCurrentTime = actionTimeCooldown;
                 }
 
-                int[] weights = new int[10] { DoNothingWeight.Value, OpenCloseDoorsWeight.Value, MessWithLightsWeight.Value, MessWithBreakerWeight.Value, OpenCloseDoorsWeight.Value, lockUnlockDoorsWeight.Value, disableTurretsWeight.Value, disableLandminesWeight.Value, disableSpikeTrapsWeight.Value, turretRageWeight.Value };
+                int[] Weights = new int[10] { DoNothingWeight.Value, OpenCloseDoorsWeight.Value, MessWithLightsWeight.Value, MessWithBreakerWeight.Value, OpenCloseDoorsWeight.Value, lockUnlockDoorsWeight.Value, disableTurretsWeight.Value, disableLandminesWeight.Value, disableSpikeTrapsWeight.Value, turretRageWeight.Value };
                 if (ghostCrazyCurrentTime.Value > 0.0f)
                 {
-                    weights[0] = 0; // Wont attempt to do nothing when going crazy
-                    weights[5] = 0; // Wont attempt to lock or unlock doors when going crazy
-                    weights[6] = 0; // Wont attempt to disable turrets whjen going crazy
-                    weights[7] = 0; // Wont attempt to disable landmines when going crazy
-                    weights[8] = 0; // Wont attempt to disable spiektraps when going crazy
+                    Weights[0] = 0; // Wont attempt to do nothing when going crazy
+                    Weights[5] = 0; // Wont attempt to lock or unlock doors when going crazy
+                    Weights[6] = 0; // Wont attempt to disable turrets whjen going crazy
+                    Weights[7] = 0; // Wont attempt to disable landmines when going crazy
+                    Weights[8] = 0; // Wont attempt to disable spiektraps when going crazy
                 }
-                int ghostDecision = RoundManager.Instance.GetRandomWeightedIndex(weights, rng);
+                int ghostDecision = RoundManager.Instance.GetRandomWeightedIndex(Weights, rng);
 
                 switch(ghostDecision)
                 {

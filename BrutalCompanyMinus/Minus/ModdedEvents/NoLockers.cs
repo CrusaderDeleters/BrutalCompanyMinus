@@ -20,10 +20,10 @@ namespace BrutalCompanyMinus.Minus.Events
 
             eventsToRemove = new List<string>() { nameof(Hell), nameof(Lockers) };
 
-            weight = 1;
-            descriptions = new List<string>() { "No iron maidens", "No lockers", "Your chances of surviving has slightly increased." };
-            colorHex = "#008000";
-            type = EventType.Remove;
+            Weight = 1;
+            Descriptions = new List<string>() { "No iron maidens", "No lockers", "Your chances of surviving has slightly increased." };
+            ColorHex = "#008000";
+            Type = EventType.Remove;
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists("LockerEnemy") && Compatibility.lockerPresent;

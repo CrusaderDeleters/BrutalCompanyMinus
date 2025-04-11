@@ -58,10 +58,10 @@ namespace BrutalCompanyMinus
             {
                 Log.LogInfo("Found YippeeMod, Will attempt to replace kamikazie bug SFX");
 
-                Type type = yippeeAssembly.GetType("YippeeMod.YippeeModBase");
-                if (type != null)
+                Type Type = yippeeAssembly.GetType("YippeeMod.YippeeModBase");
+                if (Type != null)
                 {
-                    FieldInfo localField = type.GetField("newSFX", BindingFlags.Static | BindingFlags.NonPublic);
+                    FieldInfo localField = Type.GetField("newSFX", BindingFlags.Static | BindingFlags.NonPublic);
                     if (localField != null)
                     {
                         yippeeNewSFX = (AudioClip[])localField.GetValue(null);
@@ -79,10 +79,10 @@ namespace BrutalCompanyMinus
             {
                 Log.LogInfo("Found PeepersMod, Will attempt to get spawnChance field.");
 
-                Type type = peepersAssembly.GetType("LCPeeper.Peeper");
-                if (type != null)
+                Type Type = peepersAssembly.GetType("LCPeeper.Peeper");
+                if (Type != null)
                 {
-                    peeperSpawnChance = type.GetField("PeeperSpawnChance", BindingFlags.Static | BindingFlags.Public);
+                    peeperSpawnChance = Type.GetField("PeeperSpawnChance", BindingFlags.Static | BindingFlags.Public);
                     if (peeperSpawnChance != null)
                     {
                         Log.LogInfo("Found spawnChance Field, Peepers and NoPeepers event's will now occur");

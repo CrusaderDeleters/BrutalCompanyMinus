@@ -260,15 +260,15 @@ namespace BrutalCompanyMinus
             string[] splitted = item.Split(":");
             if(splitted.Length == 2)
             {
-                int weight = 0;
+                int Weight = 0;
                 try
                 {
-                    weight = int.Parse(splitted[1]);
+                    Weight = int.Parse(splitted[1]);
                 } catch
                 {
 
                 }
-                return new SpawnableItemWithRarity() { spawnableItem = Assets.GetItem(splitted[0]), rarity = weight };
+                return new SpawnableItemWithRarity() { spawnableItem = Assets.GetItem(splitted[0]), rarity = Weight };
             }
 
             return new SpawnableItemWithRarity() { spawnableItem = Assets.GetItem(Assets.ItemName.AirHorn), rarity = 100 };

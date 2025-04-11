@@ -20,10 +20,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 1;
-            descriptions = new List<string>() { "The ship has arrived a little early.", "Warp drive activated!", "The early bird catches the worm." };
-            colorHex = "#008000";
-            type = EventType.Good;
+            Weight = 1;
+            Descriptions = new List<string>() { "The ship has arrived a little early.", "Warp drive activated!", "The early bird catches the worm." };
+            ColorHex = "#008000";
+            Type = EventType.Good;
 
             eventsToRemove = new List<string>() { nameof(LateShip) };
 

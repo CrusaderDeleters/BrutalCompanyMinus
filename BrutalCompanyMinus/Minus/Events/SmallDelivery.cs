@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 2;
-            descriptions = new List<string>() { "The company has decided to give you a present.", "Small shipment for small jobs", "Congratz, you have been awarded." };
-            colorHex = "#008000";
-            type = EventType.Good;
+            Weight = 2;
+            Descriptions = new List<string>() { "The company has decided to give you a present.", "Small shipment for small jobs", "Congratz, you have been awarded." };
+            ColorHex = "#008000";
+            Type = EventType.Good;
 
             scaleList.Add(ScaleType.MinItemAmount, new Scale(2.0f, 0.06f, 2.0f, 8.0f));
             scaleList.Add(ScaleType.MaxItemAmount, new Scale(3.0f, 0.09f, 3.0f, 12.0f));

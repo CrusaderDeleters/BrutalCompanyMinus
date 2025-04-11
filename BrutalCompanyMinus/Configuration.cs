@@ -39,7 +39,7 @@ namespace BrutalCompanyMinus
         public static ConfigEntry<bool> useCustomWeights, showEventsInChat;
         public static Scale eventsToSpawn;
         public static ConfigEntry<float> goodEventIncrementMultiplier, badEventIncrementMultiplier;
-        public static float[] weightsForExtraEvents;
+        public static float[] WeightsForExtraEvents;
         public static Scale[] eventTypeScales = new Scale[6];
         public static EventManager.DifficultyTransition[] difficultyTransitions;
         public static ConfigEntry<bool> enableQuotaChanges;
@@ -138,7 +138,7 @@ namespace BrutalCompanyMinus
             
 
             // Difficulty Settings
-            useCustomWeights = difficultyConfig.Bind("_Event Settings", "Use custom weights?", false, "'false'= Use eventType weights to set all the weights     'true'= Use custom set weights");
+            useCustomWeights = difficultyConfig.Bind("_Event Settings", "Use custom Weights?", false, "'false'= Use eventType Weights to set all the Weights     'true'= Use custom set Weights");
             AddConfigForLethalConfig(new BoolCheckBoxConfigItem(useCustomWeights, false), difficultyModInfo);
 
             ConfigEntry<string> eventsToSpawnConfigEntry = difficultyConfig.Bind("_Event Settings", "Event scale amount", "2, 0.03, 2.0, 5.0", "The base amount of events   Format: BaseScale, IncrementScale, MinCap, MaxCap,   " + scaleDescription);
@@ -146,10 +146,10 @@ namespace BrutalCompanyMinus
             eventsToSpawnConfigEntry.SettingChanged += (o, e) => eventsToSpawn = GetScale(eventsToSpawnConfigEntry.Value);
             AddConfigForLethalConfig(new TextInputFieldConfigItem(eventsToSpawnConfigEntry, false), difficultyModInfo);
 
-            ConfigEntry<string> weightsForExtraEventsConfigEntry = difficultyConfig.Bind("_Event Settings", "Weights for bonus events", "40, 39, 15, 5, 1", "Weights for bonus events, can be expanded. (40, 39, 15, 5, 1) is equivalent to (+0, +1, +2, +3, +4) events");
-            weightsForExtraEvents = ParseValuesFromString(weightsForExtraEventsConfigEntry.Value);
-            weightsForExtraEventsConfigEntry.SettingChanged += (o, e) => weightsForExtraEvents = ParseValuesFromString(weightsForExtraEventsConfigEntry.Value);
-            AddConfigForLethalConfig(new TextInputFieldConfigItem(weightsForExtraEventsConfigEntry, false), difficultyModInfo);
+            ConfigEntry<string> WeightsForExtraEventsConfigEntry = difficultyConfig.Bind("_Event Settings", "Weights for bonus events", "40, 39, 15, 5, 1", "Weights for bonus events, can be expanded. (40, 39, 15, 5, 1) is equivalent to (+0, +1, +2, +3, +4) events");
+            WeightsForExtraEvents = ParseValuesFromString(WeightsForExtraEventsConfigEntry.Value);
+            WeightsForExtraEventsConfigEntry.SettingChanged += (o, e) => WeightsForExtraEvents = ParseValuesFromString(WeightsForExtraEventsConfigEntry.Value);
+            AddConfigForLethalConfig(new TextInputFieldConfigItem(WeightsForExtraEventsConfigEntry, false), difficultyModInfo);
 
             showEventsInChat = difficultyConfig.Bind("_Event Settings", "Will Minus display events in chat?", false);
             AddConfigForLethalConfig(new BoolCheckBoxConfigItem(showEventsInChat, false), difficultyModInfo);
@@ -235,7 +235,7 @@ namespace BrutalCompanyMinus
             gradeAdditivesConfigEntry.SettingChanged += (o, e) => gradeAdditives = GetMoonRiskFromString(gradeAdditivesConfigEntry.Value);
             AddConfigForLethalConfig(new TextInputFieldConfigItem(gradeAdditivesConfigEntry, false), difficultyModInfo);
 
-            scaleByWeather = difficultyConfig.Bind("Difficulty Scaling", "Scale by weather type?", false, "Will add to difficulty depending on weather of moon you land on.");
+            scaleByWeather = difficultyConfig.Bind("Difficulty Scaling", "Scale by weather Type?", false, "Will add to difficulty depending on weather of moon you land on.");
             AddConfigForLethalConfig(new BoolCheckBoxConfigItem(scaleByWeather, false), difficultyModInfo);
 
             weatherAdditives = new Dictionary<LevelWeatherType, float>()
@@ -526,31 +526,31 @@ namespace BrutalCompanyMinus
             Minus.Handlers.FacilityGhost.crazyGhostChance = eventConfig.Bind(nameof(FacilityGhost), "Crazy Chance", 0.1f, "Whenever the ghost makes a decision, what is the chance that it will go crazy?");
             AddConfigForLethalConfig(new FloatSliderConfigItem(Minus.Handlers.FacilityGhost.crazyGhostChance, new FloatSliderOptions() { RequiresRestart = false, Min = 0.0f, Max = 1.0f }), vanillaEventsModInfo);
 
-            Minus.Handlers.FacilityGhost.DoNothingWeight = eventConfig.Bind(nameof(FacilityGhost), "Do Nothing Weight?", 25, "Whenever the ghost makes a decision, what is the weight to do nothing?");
+            Minus.Handlers.FacilityGhost.DoNothingWeight = eventConfig.Bind(nameof(FacilityGhost), "Do Nothing Weight?", 25, "Whenever the ghost makes a decision, what is the Weight to do nothing?");
             AddConfigForLethalConfig(new IntInputFieldConfigItem(Minus.Handlers.FacilityGhost.DoNothingWeight, false), vanillaEventsModInfo);
 
-            Minus.Handlers.FacilityGhost.OpenCloseBigDoorsWeight = eventConfig.Bind(nameof(FacilityGhost), "Open and close big doors weight", 20, "Whenever the ghost makes a decision, what is the weight for ghost to open and close big doors?");
+            Minus.Handlers.FacilityGhost.OpenCloseBigDoorsWeight = eventConfig.Bind(nameof(FacilityGhost), "Open and close big doors Weight", 20, "Whenever the ghost makes a decision, what is the Weight for ghost to open and close big doors?");
             AddConfigForLethalConfig(new IntInputFieldConfigItem(Minus.Handlers.FacilityGhost.OpenCloseBigDoorsWeight, false), vanillaEventsModInfo);
 
-            Minus.Handlers.FacilityGhost.MessWithLightsWeight = eventConfig.Bind(nameof(FacilityGhost), "Mess with lights weight", 16, "Whenever the ghost makes a decision, what is the weight to mess with lights?");
+            Minus.Handlers.FacilityGhost.MessWithLightsWeight = eventConfig.Bind(nameof(FacilityGhost), "Mess with lights Weight", 16, "Whenever the ghost makes a decision, what is the Weight to mess with lights?");
             AddConfigForLethalConfig(new IntInputFieldConfigItem(Minus.Handlers.FacilityGhost.MessWithLightsWeight, false), vanillaEventsModInfo);
 
-            Minus.Handlers.FacilityGhost.MessWithBreakerWeight = eventConfig.Bind(nameof(FacilityGhost), "Mess with breaker weight", 4, "Whenever the ghost makes a decision, what is the weight to mess with the breaker?");
+            Minus.Handlers.FacilityGhost.MessWithBreakerWeight = eventConfig.Bind(nameof(FacilityGhost), "Mess with breaker Weight", 4, "Whenever the ghost makes a decision, what is the Weight to mess with the breaker?");
             AddConfigForLethalConfig(new IntInputFieldConfigItem(Minus.Handlers.FacilityGhost.MessWithBreakerWeight, false), vanillaEventsModInfo);
 
-            Minus.Handlers.FacilityGhost.disableTurretsWeight = eventConfig.Bind(nameof(FacilityGhost), "Disable turrets weight?", 5, "Whenever the ghost makes a decision, what is the weight to attempt to disable the turrets?");
+            Minus.Handlers.FacilityGhost.disableTurretsWeight = eventConfig.Bind(nameof(FacilityGhost), "Disable turrets Weight?", 5, "Whenever the ghost makes a decision, what is the Weight to attempt to disable the turrets?");
             AddConfigForLethalConfig(new IntInputFieldConfigItem(Minus.Handlers.FacilityGhost.disableTurretsWeight, false), vanillaEventsModInfo);
 
-            Minus.Handlers.FacilityGhost.disableLandminesWeight = eventConfig.Bind(nameof(FacilityGhost), "Disable landmines weight?", 5, "Whenever the ghost makes a decision, what is the weight to attempt to disable the landmines?");
+            Minus.Handlers.FacilityGhost.disableLandminesWeight = eventConfig.Bind(nameof(FacilityGhost), "Disable landmines Weight?", 5, "Whenever the ghost makes a decision, what is the Weight to attempt to disable the landmines?");
             AddConfigForLethalConfig(new IntInputFieldConfigItem(Minus.Handlers.FacilityGhost.disableLandminesWeight, false), vanillaEventsModInfo);
 
-            Minus.Handlers.FacilityGhost.turretRageWeight = eventConfig.Bind(nameof(FacilityGhost), "Turret rage weight?", 5, "Whenever the ghost makes a decision, what is the weight to attempt to make turrets rage?");
+            Minus.Handlers.FacilityGhost.turretRageWeight = eventConfig.Bind(nameof(FacilityGhost), "Turret rage Weight?", 5, "Whenever the ghost makes a decision, what is the Weight to attempt to make turrets rage?");
             AddConfigForLethalConfig(new IntInputFieldConfigItem(Minus.Handlers.FacilityGhost.turretRageWeight, false), vanillaEventsModInfo);
 
-            Minus.Handlers.FacilityGhost.OpenCloseDoorsWeight = eventConfig.Bind(nameof(FacilityGhost), "Open and close normal doors weight", 9, "Whenever the ghost makes a decision, what is the weight to attempt to open and close normal doors.");
+            Minus.Handlers.FacilityGhost.OpenCloseDoorsWeight = eventConfig.Bind(nameof(FacilityGhost), "Open and close normal doors Weight", 9, "Whenever the ghost makes a decision, what is the Weight to attempt to open and close normal doors.");
             AddConfigForLethalConfig(new IntInputFieldConfigItem(Minus.Handlers.FacilityGhost.OpenCloseDoorsWeight, false), vanillaEventsModInfo);
 
-            Minus.Handlers.FacilityGhost.lockUnlockDoorsWeight = eventConfig.Bind(nameof(FacilityGhost), "Lock and unlock normal doors weight", 3, "Whenever the ghost makes a decision, what is the weight to attempt to lock and unlock normal doors.");
+            Minus.Handlers.FacilityGhost.lockUnlockDoorsWeight = eventConfig.Bind(nameof(FacilityGhost), "Lock and unlock normal doors Weight", 3, "Whenever the ghost makes a decision, what is the Weight to attempt to lock and unlock normal doors.");
             AddConfigForLethalConfig(new IntInputFieldConfigItem(Minus.Handlers.FacilityGhost.lockUnlockDoorsWeight, false), vanillaEventsModInfo);
 
             Minus.Handlers.FacilityGhost.chanceToOpenCloseDoor = eventConfig.Bind(nameof(FacilityGhost), "Chance to open and close normal doors", 0.3f, "Whenever the ghosts decides to open and close doors, what is the chance for each individual door that it will do that.");
@@ -561,10 +561,10 @@ namespace BrutalCompanyMinus
 
 
 
-            Minus.Handlers.RealityShift.normalScrapWeight = eventConfig.Bind(nameof(RealityShift), "Normal shift weight", 85, "Weight for transforming scrap into some other scrap?");
+            Minus.Handlers.RealityShift.normalScrapWeight = eventConfig.Bind(nameof(RealityShift), "Normal shift Weight", 85, "Weight for transforming scrap into some other scrap?");
             AddConfigForLethalConfig(new IntInputFieldConfigItem(Minus.Handlers.RealityShift.normalScrapWeight, false), vanillaEventsModInfo);
 
-            Minus.Handlers.RealityShift.grabbableLandmineWeight = eventConfig.Bind(nameof(RealityShift), "Grabbable landmine shift weight", 15, "Weight for transforming scrap into a grabbable landmine?");
+            Minus.Handlers.RealityShift.grabbableLandmineWeight = eventConfig.Bind(nameof(RealityShift), "Grabbable landmine shift Weight", 15, "Weight for transforming scrap into a grabbable landmine?");
             AddConfigForLethalConfig(new IntInputFieldConfigItem(Minus.Handlers.RealityShift.grabbableLandmineWeight, false), vanillaEventsModInfo);
 
             Minus.Handlers.RealityShift.transmuteChance = eventConfig.Bind(nameof(RealityShift), "Chance to transmute", 0.5f, "Chance for transmutation to occur.");
@@ -677,7 +677,7 @@ namespace BrutalCompanyMinus
                 else
                 {
                     newEvents.Add(e);
-                    switch(e.type)
+                    switch(e.Type)
                     {
                         case EventType.VeryBad:
                             EventManager.allVeryBad.Add(e);
@@ -783,7 +783,7 @@ namespace BrutalCompanyMinus
             allEnemiesCycle = new SpawnCycle()
             {
                 enemies = allSpawnInfos,
-                nothingWeight = allEnemiesConfig.Bind("_All Enemies", "All enemies nothing weight", 400.0f, "This is the weight chance for a spawn to not occur.").Value,
+                nothingWeight = allEnemiesConfig.Bind("_All Enemies", "All enemies nothing Weight", 400.0f, "This is the Weight chance for a spawn to not occur.").Value,
                 spawnAttemptInterval = allEnemiesConfig.Bind("_All Enemies", "Spawn interval", 86.0f, "How often will this cycle attempt to spawn an enemy? in seconds").Value,
                 spawnCycleDuration = 0.0f
             };
@@ -850,7 +850,7 @@ namespace BrutalCompanyMinus
             allAllEnemiesCycle = new SpawnCycle()
             {
                 enemies = allAllSpawnInfos,
-                nothingWeight = allEnemiesConfig.Bind("_All All Enemies", "All enemies nothing weight", 400.0f, "This is the weight chance for a spawn to not occur.").Value,
+                nothingWeight = allEnemiesConfig.Bind("_All All Enemies", "All enemies nothing Weight", 400.0f, "This is the Weight chance for a spawn to not occur.").Value,
                 spawnAttemptInterval = allEnemiesConfig.Bind("_All All Enemies", "Spawn interval", 86.0f, "How often will this cycle attempt to spawn enemies? in seconds").Value,
                 spawnCycleDuration = 0.0f
             };
@@ -862,8 +862,8 @@ namespace BrutalCompanyMinus
             return new EnemySpawnInfo()
             {
                 enemy = GetEnemyOrDefault(enemy).enemyPrefab,
-                enemyWeight = allEnemiesConfig.Bind(header, $"{spawnLocation} {enemy} Weight", defaultWeight, "weight").Value,
-                spawnCap = allEnemiesConfig.Bind(header, $"{spawnLocation} {enemy} Spawn Cap", spawnCap, "weight").Value,
+                enemyWeight = allEnemiesConfig.Bind(header, $"{spawnLocation} {enemy} Weight", defaultWeight, "Weight").Value,
+                spawnCap = allEnemiesConfig.Bind(header, $"{spawnLocation} {enemy} Spawn Cap", spawnCap, "Weight").Value,
                 spawnLocation = spawnLocation
             };
         }

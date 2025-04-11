@@ -183,10 +183,10 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
 
             private void AttemptSpawnInside(float nothingWeight, float chanceMultiplier)
             {
-                float weight = enemyWeight * chanceMultiplier;
+                float Weight = enemyWeight * chanceMultiplier;
                 
-                Log.LogInfo($"### Attempting to spawn {enemy.name} at {weight:F2} weight;");
-                if ((float)(rng.NextDouble() * nothingWeight) <= weight)
+                Log.LogInfo($"### Attempting to spawn {enemy.name} at {Weight:F2} Weight;");
+                if ((float)(rng.NextDouble() * nothingWeight) <= Weight)
                 {
                     if (currentSpawned >= spawnCap) return;
                     currentSpawned++;
@@ -201,9 +201,9 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
 
             private void AttemptSpawnOutside(float nothingWeight, float chanceMultiplier)
             {
-                float weight = enemyWeight * chanceMultiplier;
-                Log.LogInfo($"### Attempting to spawn {enemy.name} at {weight:F2} weight;");
-                if ((float)(rng.NextDouble() * nothingWeight) <= weight)
+                float Weight = enemyWeight * chanceMultiplier;
+                Log.LogInfo($"### Attempting to spawn {enemy.name} at {Weight:F2} Weight;");
+                if ((float)(rng.NextDouble() * nothingWeight) <= Weight)
                 {
                     if (currentSpawned >= spawnCap) return;
                     currentSpawned++;

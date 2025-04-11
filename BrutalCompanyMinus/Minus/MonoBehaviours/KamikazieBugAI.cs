@@ -418,7 +418,7 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
                 if (!lookingAtPositionOfInterest)
                 {
                     agent.angularSpeed = 220f;
-                    headLookRig.weight = Mathf.Lerp(headLookRig.weight, 0f, 10f);
+                    headLookRig.Weight = Mathf.Lerp(headLookRig.Weight, 0f, 10f);
                     return;
                 }
                 lookTarget.position = positionOfInterest;
@@ -433,11 +433,11 @@ namespace BrutalCompanyMinus.Minus.MonoBehaviours
             float num = Vector3.Angle(transform.forward, lookTarget.position - transform.position);
             if (num > 22f)
             {
-                headLookRig.weight = Mathf.Lerp(headLookRig.weight, 1f * (Mathf.Abs(num - 180f) / 180f), 7f);
+                headLookRig.Weight = Mathf.Lerp(headLookRig.Weight, 1f * (Mathf.Abs(num - 180f) / 180f), 7f);
             }
             else
             {
-                headLookRig.weight = Mathf.Lerp(headLookRig.weight, 1f, 7f);
+                headLookRig.Weight = Mathf.Lerp(headLookRig.Weight, 1f, 7f);
             }
             headLookTarget.position = Vector3.Lerp(headLookTarget.position, lookTarget.position, 8f * Time.deltaTime);
         }

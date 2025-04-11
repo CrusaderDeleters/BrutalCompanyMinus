@@ -19,10 +19,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 3;
-            descriptions = new List<string>() { "Some turrets have turned into scrap...", "You can now offically sell some of the turrets, enjoy", "You can bring these home for an automated defense system for intruders." };
-            colorHex = "#FF0000";
-            type = EventType.Bad;
+            Weight = 3;
+            Descriptions = new List<string>() { "Some turrets have turned into scrap...", "You can now offically sell some of the turrets, enjoy", "You can bring these home for an automated defense system for intruders." };
+            ColorHex = "#FF0000";
+            Type = EventType.Bad;
 
             scaleList.Add(ScaleType.Rarity, new Scale(0.33f, 0.0066f, 0.33f, 1.0f));
             scaleList.Add(ScaleType.MinAmount, new Scale(2.0f, 0.06f, 2.0f, 8.0f));

@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 3;
-            descriptions = new List<string>() { "Pest control", "Smoke machines", "Covid free facility", "Cleaners!" };
-            colorHex = "#FF0000";
-            type = EventType.Bad;
+            Weight = 3;
+            Descriptions = new List<string>() { "Pest control", "Smoke machines", "Covid free facility", "Cleaners!" };
+            ColorHex = "#FF0000";
+            Type = EventType.Bad;
 
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(

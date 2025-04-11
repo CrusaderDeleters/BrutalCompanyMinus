@@ -69,10 +69,10 @@ namespace BrutalCompanyMinus.Minus.CustomEvents
             Configuration.AddConfigForLethalConfig(new IntInputFieldConfigItem(monsterEventAmount, false), Configuration.monsterEventsModInfo);
 
             enabled = false;
-            weight = 0;
-            descriptions = new List<string>() { "Descriptions..." };
-            colorHex = "#FF0000";
-            type = EventType.Neutral;
+            Weight = 0;
+            Descriptions = new List<string>() { "Descriptions..." };
+            ColorHex = "#FF0000";
+            Type = EventType.Neutral;
 
         }
 

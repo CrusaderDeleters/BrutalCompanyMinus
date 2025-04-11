@@ -21,10 +21,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 2;
-            descriptions = new List<string>() { "The company is now paying for kills", "RIP AND TEAR", "Extermination time", "Monsters roam free, and the price on their heads is mediocre", "The hunt is on!" };
-            colorHex = "#008000";
-            type = EventType.Good;
+            Weight = 2;
+            Descriptions = new List<string>() { "The company is now paying for kills", "RIP AND TEAR", "Extermination time", "Monsters roam free, and the price on their heads is mediocre", "The hunt is on!" };
+            ColorHex = "#008000";
+            Type = EventType.Good;
 
             scaleList.Add(ScaleType.MinValue, new Scale(20.0f, 0.4f, 20.0f, 60.0f));
             scaleList.Add(ScaleType.MaxValue, new Scale(30.0f, 0.6f, 30.0f, 90.0f));

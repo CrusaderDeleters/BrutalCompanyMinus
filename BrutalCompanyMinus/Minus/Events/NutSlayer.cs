@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 1;
-            descriptions = new List<string>() { "The nut slayer is inside the facility...", "Enjoy", "I should make this thing play doom music.", "Even god wont save you from him." };
-            colorHex = "#280000";
-            type = EventType.VeryBad;
+            Weight = 1;
+            Descriptions = new List<string>() { "The nut slayer is inside the facility...", "Enjoy", "I should make this thing play doom music.", "Even god wont save you from him." };
+            ColorHex = "#280000";
+            Type = EventType.VeryBad;
 
             eventsToSpawnWith = new List<string>() { nameof(Gloomy), nameof(Thumpers), nameof(Spiders), nameof(Masked) };
             eventsToRemove = new List<string>() { nameof(HeavyRain), nameof(Raining) };

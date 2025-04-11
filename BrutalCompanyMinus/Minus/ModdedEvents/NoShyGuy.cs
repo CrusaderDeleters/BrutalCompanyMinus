@@ -20,10 +20,10 @@ namespace BrutalCompanyMinus.Minus.Events
 
             eventsToRemove = new List<string>() { nameof(Hell), nameof(ShyGuy) };
 
-            weight = 1;
-            descriptions = new List<string>() { "SCP-096 is contained.", "You can open your eyes" };
-            colorHex = "#008000";
-            type = EventType.Remove;
+            Weight = 1;
+            Descriptions = new List<string>() { "SCP-096 is contained.", "You can open your eyes" };
+            ColorHex = "#008000";
+            Type = EventType.Remove;
         }
 
         public override bool AddEventIfOnly() => Manager.SpawnExists("ShyGuyDef") && Compatibility.scopophobiaPresent;

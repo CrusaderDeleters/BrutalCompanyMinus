@@ -19,10 +19,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 3;
-            descriptions = new List<string>() { "There are landmines, Outside.", "This facility also has setup it's own booby traps outside", "Watch your step... but outside", "Iraq" };
-            colorHex = "#FF0000";
-            type = EventType.Bad;
+            Weight = 3;
+            Descriptions = new List<string>() { "There are landmines, Outside.", "This facility also has setup it's own booby traps outside", "Watch your step... but outside", "Iraq" };
+            ColorHex = "#FF0000";
+            Type = EventType.Bad;
 
             scaleList.Add(ScaleType.MinDensity, new Scale(0.003f, 0.00012f, 0.003f, 0.015f));
             scaleList.Add(ScaleType.MaxDensity, new Scale(0.0042f, 0.000168f, 0.0042f, 0.021f));

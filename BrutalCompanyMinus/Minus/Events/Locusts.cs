@@ -18,10 +18,10 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Instance = this;
 
-            weight = 8;
-            descriptions = new List<string>() { "Locust season is here", "Locusts", "The air fills with the sound of wings." };
-            colorHex = "#FFFFFF";
-            type = EventType.Neutral;
+            Weight = 8;
+            Descriptions = new List<string>() { "Locust season is here", "Locusts", "The air fills with the sound of wings." };
+            ColorHex = "#FFFFFF";
+            Type = EventType.Neutral;
 
             monsterEvents = new List<MonsterEvent>() { new MonsterEvent(
                 Assets.EnemyName.RoamingLocust,
