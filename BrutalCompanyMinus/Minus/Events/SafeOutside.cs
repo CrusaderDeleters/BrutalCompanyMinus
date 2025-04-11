@@ -34,14 +34,6 @@ namespace BrutalCompanyMinus.Minus.Events
         {
             Active = true;
             Manager.RemoveSpawn(Assets.EnemyName.Masked);
-            Manager.RemoveSpawn(Assets.EnemyName.OldBird);
-            Manager.RemoveSpawn(Assets.EnemyName.EyelessDog);
-            Manager.RemoveSpawn("SirenHead");
-            Manager.RemoveSpawn(Assets.EnemyName.ForestKeeper);
-            Manager.RemoveSpawn("DriftwoodGiant");
-            Manager.RemoveSpawn("PinkGiant");
-            Manager.RemoveSpawn("DriftwoodGiantObj");
-            Manager.RemoveSpawn("PinkGiantObj");
         }
 
         public override void OnShipLeave() => Active = false;
